@@ -5,9 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT & Cybersecurity Professional</title>
     <link rel="stylesheet" href="css.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('cyberteam.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.6); /* Add contrast for readability */
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack navigation links */
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                background-size: auto; /* Prevent image from cropping on small screens */
+            }
+
+            header h1 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
 </head>
-<body style="background-image: url('cyberteam.jpg');
-background-repeat: no-repeat; background-size: cover;">
+<body>
     <header>
         <h1>Welcome to Letsapo Bokang's Personal WebSite</h1>
         <nav>
@@ -16,7 +93,7 @@ background-repeat: no-repeat; background-size: cover;">
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
-		<li><a href="education.html">Educational Journey</a></li>
+		        <li><a href="education.html">Educational Journey</a></li>
             </ul>
         </nav>
     </header>
