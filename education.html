@@ -3,49 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Educational Journey</title>
+    <title>Educational Journey</title>
     <link rel="stylesheet" href="css.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>My Education Journey</h1>
+        <h1>My Educational Journey</h1>
         <nav>
-            
-             <ul>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
-		<li><a href="education.html">Educational Journey</a></li>
+                <li><a href="education.html">Educational Journey</a></li>
             </ul>
-
         </nav>
     </header>
     <main>
         <section>
             <h2>My Path in IT, Cybersecurity & Penetration Testing</h2>
             
-
-            <h3>Skills</h3>
-            
+            <h3>Skills & Certifications</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>23 November 2023</td>
+                        <td>Introduced to Cybersecurity</td>
+                        <td>Enrolled in IBM online courses through Coursera.</td>
+                    </tr>
+                    <tr>
+                        <td>04 March 2024</td>
+                        <td>Certified in Introduction to Cybersecurity</td>
+                        <td>Completed "Introduction to Cybersecurity Tools & Cyber Attacks."</td>
+                    </tr>
+                    <tr>
+                        <td>28 November 2023</td>
+                        <td>Introduced to Penetration Testing</td>
+                        <td>Started learning penetration testing through IBM courses on Coursera.</td>
+                    </tr>
+                    <tr>
+                        <td>15 March 2024</td>
+                        <td>Certified in Penetration Testing</td>
+                        <td>Completed "Penetration Testing, Incident Response, and Forensics."</td>
+                    </tr>
+                    <tr>
+                        <td>30 August 2024</td>
+                        <td>Advanced in Cybersecurity</td>
+                        <td>Learned Penetration Testing & Ethical Hacking at Cybrary.com and earned a certification.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
-	<section>
-	 <h3>Highlights</h3>
-		
-	<ul>
-		
-                <li>23 November 2023: Introduced to Cybersecurity at IBM online courses offered through Coursera<br>04 March 2024: Got Certified in Introduction to Cybersecurity Tools & Cyber Attacks </li>
-		<li>28 November 2023: Introduced to Penetration Testing at IBM online courses offered through Coursera<br>15 March 2024: Got Certified in Penetration Testing, Incident Response and Forensics </li>
-                <li>30 August 2024: Went deeper in Cybersecurity, Penetration Testing & Ethical Hacking at Cybrary.com<br>Got Certified</li>
-		 <li>10 January 2007: Started my School Journey at Fatima Primary School<br>Graduated in Nov-Dec 2014  </li> 
-		 <li>15 January 2017: Started my High School Journey at Lancer's Gap High School<br>Graduated in Oct-Nov 2021  </li> 
-                <li>10 August 2022: Started my Journey in BSc IT at Limkokwing University Lesotho<br>Expected to graduate in Oct-Nov 2026  </li> 
-
-           </ul>
-<br>
-<br>
-	</section>
+        <section>
+            <h3>Educational Highlights</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Milestone</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 January 2007</td>
+                        <td>Started Primary School</td>
+                        <td>Enrolled at Fatima Primary School and graduated in Nov-Dec 2014.</td>
+                    </tr>
+                    <tr>
+                        <td>15 January 2017</td>
+                        <td>Started High School</td>
+                        <td>Attended Lancer's Gap High School and graduated in Oct-Nov 2021.</td>
+                    </tr>
+                    <tr>
+                        <td>10 August 2022</td>
+                        <td>Started BSc IT</td>
+                        <td>Began studying at Limkokwing University Lesotho. Expected graduation: Oct-Nov 2026.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
     <footer>
         <p>&copy; 2025 Letsapo Bokang</p>
