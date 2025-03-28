@@ -3,36 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me</title>
-    <link rel="stylesheet" href="css.css">
+    <title>📡 Contact | Letsapo Bokang - Cybersecurity Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f0ff;
+            --cyber-purple: #bd00ff;
+            --matrix-green: #00ff88;
+            --dark-bg: #0a0a12;
+            --terminal-bg: rgba(10, 10, 18, 0.9);
+            --glow: 0 0 15px;
+        }
+
+        /* === CYBERPUNK BODY STYLING === */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(189, 0, 255, 0.05) 0%, transparent 20%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* === CYBER-HEADER WITH ANIMATED GLOW === */
+        header {
+            background: rgba(10, 10, 18, 0.8);
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cyber-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--cyber-purple),
+                    0 0 20px rgba(0, 240, 255, 0.3);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        /* === CYBER NAVIGATION (HOVER GLOW EFFECT) === */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: translateY(-3px);
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                var(--neon-blue),
+                transparent
+            );
+            transform: rotate(30deg);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        nav ul li a:hover::before {
+            opacity: 0.6;
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* === MAIN CONTENT (TERMINAL STYLE) === */
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .cyber-contact {
+            background: var(--terminal-bg);
+            border: 1px solid var(--matrix-green);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--matrix-green);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* === CONTACT LIST (GLOWING ICONS) === */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 240, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        .contact-list li:hover .contact-icon {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .contact-icon i {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-text a:hover {
+            color: var(--matrix-green);
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+
+        .contact-text span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.2rem;
+        }
+
+        /* === FOOTER (ANIMATED SHIELD) === */
+        footer {
+            background: rgba(10, 10, 18, 0.8);
+            border-top: 1px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cyber-footer {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .shield-icon {
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite, rotate 10s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .cyber-title {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cyber-contact {
+                padding: 1.5rem;
+            }
+
+            .contact-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cyber-title {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Contact Me</h1>
+        <h1 class="cyber-title">CONTACT ME</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="education.html">Educational Journey</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user-secret"></i> About</a></li>
+                <li><a href="projects.html"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="contact.html"><i class="fas fa-terminal"></i> Contact</a></li>
+                <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <section>
-            <h2>Get in Touch</h2>
-            <p>Feel free to reach out for collaborations or inquiries.</p>
-            <ul>
-               <li> <img src="facebook.png" alt="Facebook Icon" style="width: 20px; height: 20px;"> <a href="https://www.facebook.com/letsapo.bokang">Facebook</a></li>
-                <li><img src="whatsapp.jpeg" alt="WhatsApp Icon" style="width: 20px; height: 20px;"> <a href="https://wa.me/26657620256">+266 57620256</a> | <a href="https://wa.me/26651684904">+266 51684904</a></li>
-               <li> <img src="linkedin.jpeg" alt="LinkedIn Icon" style="width: 20px; height: 20px;"> <a href="https://www.linkedin.com/in/bokang-letsapo-68460029a">LinkedIn</a></li>
-                <li><img src="location.jpeg" alt="Location Icon" style="width: 20px; height: 20px;"> Motimposo, Sefateng, Maseru 100, Lesotho</li>
+        <section class="cyber-contact">
+            <h2><i class="fas fa-satellite-dish"></i> GET IN TOUCH</h2>
+            <p>Feel free to reach out for collaborations, cybersecurity consultations, or tech inquiries. I'm always open to exciting opportunities!</p>
+
+            <ul class="contact-list">
+                <!-- Facebook -->
+                <li>
+                    <div class="contact-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://www.facebook.com/letsapo.bokang" target="_blank">Facebook</a>
+                        <span>Connect with me on Facebook</span>
+                    </div>
+                </li>
+
+                <!-- WhatsApp -->
+                <li>
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://wa.me/26657620256" target="_blank">+266 57620256</a> | 
+                        <a href="https://wa.me/26651684904" target="_blank">+266 51684904</a>
+                        <span>Message me on WhatsApp</span>
+                    </div>
+                </li>
+
+                <!-- LinkedIn -->
+                <li>
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://www.linkedin.com/in/bokang-letsapo-68460029a" target="_blank">LinkedIn</a>
+                        <span>View my professional profile</span>
+                    </div>
+                </li>
+
+                <!-- Location -->
+                <li>
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        Motimposo, Sefateng, Maseru 100, Lesotho
+                        <span>Based in Lesotho</span>
+                    </div>
+                </li>
             </ul>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 Letsapo Bokang</p>
+        <p class="cyber-footer">
+            &copy; 2025 Letsapo Bokang <span class="shield-icon">🛡️</span>
+        </p>
     </footer>
+
+    <!-- Optional: Floating Binary Background Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const binaryChars = ['0', '1'];
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '-1';
+            container.style.overflow = 'hidden';
+            document.body.appendChild(container);
+
+            for (let i = 0; i < 50; i++) {
+                const binary = document.createElement('div');
+                binary.style.position = 'absolute';
+                binary.style.color = `rgba(0, 255, 136, ${Math.random() * 0.2 + 0.1})`;
+                binary.style.fontSize = `${Math.random() * 12 + 10}px`;
+                binary.style.left = `${Math.random() * 100}vw`;
+                binary.style.top = `${Math.random() * 100}vh`;
+                binary.style.animation = `fall ${Math.random() * 10 + 5}s linear infinite`;
+                binary.style.animationDelay = `${Math.random() * 5}s`;
+                
+                let text = '';
+                for (let j = 0; j < 10; j++) {
+                    text += binaryChars[Math.floor(Math.random() * 2)] + ' ';
+                }
+                binary.textContent = text;
+                container.appendChild(binary);
+            }
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fall {
+                    0% { transform: translateY(-100px); }
+                    100% { transform: translateY(calc(100vh + 100px)); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
