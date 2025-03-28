@@ -3,102 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT & Cybersecurity Professional</title>
+    <title>IT & Cybersecurity Professional | Letsapo Bokang</title>
     <link rel="stylesheet" href="css.css">
     <style>
+        :root {
+            --cyber-blue: #0ff0fc;
+            --matrix-green: #00ff41;
+            --dark-bg: #0a0a0a;
+        }
+        
         body {
             margin: 0;
             padding: 0;
-            background-image: url('cyberteam.jpg');
+            background-image: url('cyberteam.jpg'), linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(10,20,30,0.9));
+            background-blend-mode: overlay;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated binary code background effect */
+        .binary-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .binary-code {
+            position: absolute;
+            color: var(--matrix-green);
+            font-size: 14px;
+            white-space: nowrap;
+            animation: fall 15s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(calc(100vh + 100px)); }
         }
 
         header {
             text-align: center;
-            color: white;
-            padding: 10px 0;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding: 20px 0;
+            background: linear-gradient(to right, var(--cyber-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+            letter-spacing: 2px;
         }
 
         nav ul {
             list-style-type: none;
             padding: 0;
-            margin: 0;
+            margin: 20px 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         nav ul li {
             display: inline;
+            position: relative;
         }
 
         nav ul li a {
             text-decoration: none;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--cyber-blue);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9em;
         }
 
         nav ul li a:hover {
-            background: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+            background: rgba(15, 240, 252, 0.2);
+            box-shadow: 0 0 15px var(--cyber-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Cyber terminal effect for main content */
+        .cyber-terminal {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--matrix-green);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--matrix-green);
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .btn-red { background: #ff5f56; }
+        .btn-yellow { background: #ffbd2e; }
+        .btn-green { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 10px;
+            color: var(--matrix-green);
+            font-size: 0.9em;
+        }
+
+        .terminal-body {
+            font-family: 'Courier New', monospace;
+        }
+
+        .command-line {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .prompt {
+            color: var(--matrix-green);
+            margin-right: 10px;
+        }
+
+        .typing-effect {
+            border-right: 2px solid var(--matrix-green);
+            animation: blink 1s step-end infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3.5s steps(40, end) forwards, blink 1s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--matrix-green) }
         }
 
         footer {
             text-align: center;
             color: white;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
+            padding: 20px 0;
             width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: 40px;
         }
 
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        /* Cyber security shield icon */
+        .shield-icon {
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 1.5em;
-                padding: 10px;
+                font-size: 1.8em;
+                padding: 15px;
             }
 
             nav ul {
-                flex-direction: column; /* Stack navigation links */
+                flex-direction: column;
                 gap: 10px;
+            }
+
+            .cyber-terminal {
+                margin: 20px;
+                padding: 15px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                background-size: auto; /* Prevent cropping on very small screens */
+                background-size: auto;
             }
 
             header h1 {
-                font-size: 1.2em;
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated binary background -->
+    <div class="binary-bg" id="binaryContainer"></div>
+
     <header>
-        <h1>Welcome to Letsapo Bokang's Personal WebSite</h1>
+        <h1>Welcome to Letsapo Bokang's Cyber Hub</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
-		        <li><a href="education.html">Educational Journey</a></li>
+                <li><a href="education.html">Educational Journey</a></li>
             </ul>
         </nav>
     </header>
+    
     <main>
-        
+        <div class="cyber-terminal">
+            <div class="terminal-header">
+                <span class="terminal-btn btn-red"></span>
+                <span class="terminal-btn btn-yellow"></span>
+                <span class="terminal-btn btn-green"></span>
+                <span class="terminal-title">root@bokang-cyber:~</span>
+            </div>
+            <div class="terminal-body">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <span class="typing-effect">Hello World! I'm Letsapo Bokang - IT Technician & Cybersecurity Specialist</span>
+                </div>
+                <div class="command-line" style="animation-delay: 3.5s;">
+                    <span class="prompt">$</span>
+                    <span class="typing-effect" style="animation-delay: 3.5s; animation-duration: 4s;">Securing digital frontiers and building robust systems</span>
+                </div>
+                <div class="command-line" style="animation-delay: 7.5s;">
+                    <span class="prompt">$</span>
+                    <span class="typing-effect" style="animation-delay: 7.5s; animation-duration: 4.5s;">Explore my site to learn more about my work and expertise</span>
+                </div>
+            </div>
+        </div>
     </main>
+    
     <footer>
-        <p>&copy; 2025 Letsapo Bokang</p>
+        <p>&copy; 2025 Letsapo Bokang <span class="shield-icon">🛡️</span></p>
     </footer>
+
+    <script>
+        // Generate random binary code background
+        document.addEventListener('DOMContentLoaded', function() {
+            const binaryContainer = document.getElementById('binaryContainer');
+            const binaryChars = ['0', '1', '0', '1', '0', '1', '0', '1'];
+            
+            for (let i = 0; i < 50; i++) {
+                const binaryElement = document.createElement('div');
+                binaryElement.className = 'binary-code';
+                binaryElement.style.left = Math.random() * 100 + 'vw';
+                binaryElement.style.animationDelay = Math.random() * 15 + 's';
+                binaryElement.style.animationDuration = 10 + Math.random() * 20 + 's';
+                
+                let binaryText = '';
+                const length = 20 + Math.floor(Math.random() * 30);
+                for (let j = 0; j < length; j++) {
+                    binaryText += binaryChars[Math.floor(Math.random() * binaryChars.length)] + ' ';
+                }
+                
+                binaryElement.textContent = binaryText;
+                binaryContainer.appendChild(binaryElement);
+            }
+            
+            // Make terminal commands interactive
+            const commands = document.querySelectorAll('.typing-effect');
+            commands.forEach((cmd, index) => {
+                cmd.style.animationDelay = `${index * 3.5}s`;
+            });
+        });
+    </script>
 </body>
 </html>
