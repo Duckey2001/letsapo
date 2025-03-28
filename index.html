@@ -3,118 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT & Cybersecurity Professional | Letsapo Bokang</title>
-    <link rel="stylesheet" href="css.css">
+    <title>🚀 Letsapo Bokang | Cybersecurity Architect & IT Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --cyber-blue: #0ff0fc;
-            --matrix-green: #00ff41;
-            --dark-bg: #0a0a0a;
+            --neon-blue: #00f0ff;
+            --cyber-purple: #bd00ff;
+            --matrix-green: #00ff88;
+            --dark-bg: #0a0a12;
+            --terminal-bg: rgba(10, 10, 18, 0.85);
         }
-        
+
+        /* === CYBERSPACE 3D BACKGROUND === */
         body {
             margin: 0;
             padding: 0;
-            background-image: url('cyberteam.jpg'), linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(10,20,30,0.9));
-            background-blend-mode: overlay;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            font-family: 'Courier New', monospace;
+            font-family: 'Rajdhani', 'Courier New', monospace;
+            background: var(--dark-bg);
             color: white;
-            position: relative;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
 
-        /* Animated binary code background effect */
-        .binary-bg {
-            position: absolute;
+        #cyberCanvas {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
             z-index: -1;
-            overflow: hidden;
+            opacity: 0.8;
         }
 
-        .binary-code {
-            position: absolute;
-            color: var(--matrix-green);
-            font-size: 14px;
-            white-space: nowrap;
-            animation: fall 15s linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-100px); }
-            100% { transform: translateY(calc(100vh + 100px)); }
-        }
-
+        /* === CYBERPUNK HEADER === */
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 2rem 0;
             position: relative;
+            z-index: 10;
         }
 
-        header h1 {
-            font-size: 2.5em;
+        .cyber-title {
+            font-size: 3.5rem;
             margin: 0;
-            padding: 20px 0;
-            background: linear-gradient(to right, var(--cyber-blue), var(--matrix-green));
+            background: linear-gradient(90deg, var(--neon-blue), var(--cyber-purple));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            letter-spacing: 3px;
+            font-weight: 700;
+            animation: flicker 2s infinite alternate;
         }
 
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--cyber-purple),
+                    0 0 30px rgba(0, 240, 255, 0.5);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        /* === CYBER NAVIGATION (HOVER GLOW) === */
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
-            margin: 20px 0;
+            margin: 2rem 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        nav ul li {
-            display: inline;
-            position: relative;
+            gap: 1.5rem;
         }
 
         nav ul li a {
             text-decoration: none;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--cyber-blue);
-            font-weight: bold;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 0.9em;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                var(--neon-blue),
+                transparent
+            );
+            transform: rotate(30deg);
+            opacity: 0;
+            transition: all 0.5s ease;
         }
 
         nav ul li a:hover {
-            background: rgba(15, 240, 252, 0.2);
-            box-shadow: 0 0 15px var(--cyber-blue);
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 20px var(--neon-blue);
             transform: translateY(-3px);
         }
 
-        /* Cyber terminal effect for main content */
-        .cyber-terminal {
-            max-width: 800px;
-            margin: 40px auto;
-            background: rgba(0, 0, 0, 0.7);
+        nav ul li a:hover::before {
+            opacity: 0.6;
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* === MAIN TERMINAL (HACKER STYLE) === */
+        .cyber-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: var(--terminal-bg);
             border: 1px solid var(--matrix-green);
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -122,16 +146,16 @@
         .terminal-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
             border-bottom: 1px solid var(--matrix-green);
         }
 
         .terminal-btn {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 8px;
         }
 
         .btn-red { background: #ff5f56; }
@@ -139,32 +163,36 @@
         .btn-green { background: #27c93f; }
 
         .terminal-title {
-            margin-left: 10px;
+            margin-left: 1rem;
             color: var(--matrix-green);
-            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
         .terminal-body {
+            padding: 2rem;
             font-family: 'Courier New', monospace;
+            min-height: 200px;
         }
 
         .command-line {
-            display: flex;
-            margin-bottom: 10px;
+            margin-bottom: 1.5rem;
         }
 
         .prompt {
             color: var(--matrix-green);
             margin-right: 10px;
+            font-weight: bold;
         }
 
         .typing-effect {
-            border-right: 2px solid var(--matrix-green);
-            animation: blink 1s step-end infinite;
+            display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            width: 0;
-            animation: typing 3.5s steps(40, end) forwards, blink 1s step-end infinite;
+            border-right: 2px solid var(--matrix-green);
+            animation: 
+                typing 3s steps(40, end) forwards,
+                blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -172,142 +200,271 @@
             to { width: 100% }
         }
 
-        @keyframes blink {
+        @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: var(--matrix-green) }
         }
 
-        footer {
-            text-align: center;
-            color: white;
-            padding: 20px 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            margin-top: 40px;
+        /* === AI VOICE ASSISTANT BUTTON === */
+        .voice-assistant {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--neon-blue);
+            transition: all 0.3s ease;
+            z-index: 100;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
+        .voice-assistant:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        .voice-assistant i {
+            color: black;
+            font-size: 1.5rem;
+        }
+
+        /* === FOOTER (ANIMATED SHIELD) === */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .cyber-footer {
+            font-size: 1rem;
             letter-spacing: 1px;
         }
 
-        /* Cyber security shield icon */
         .shield-icon {
             display: inline-block;
             margin-left: 10px;
-            animation: pulse 2s infinite;
+            animation: pulse 2s infinite, rotate 10s linear infinite;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
 
-        /* Responsive adjustments */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-                padding: 15px;
+            .cyber-title {
+                font-size: 2.5rem;
             }
 
             nav ul {
                 flex-direction: column;
-                gap: 10px;
+                align-items: center;
+                gap: 1rem;
             }
 
-            .cyber-terminal {
-                margin: 20px;
-                padding: 15px;
+            .cyber-main {
+                margin: 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                background-size: auto;
+            .cyber-title {
+                font-size: 2rem;
             }
 
-            header h1 {
-                font-size: 1.5em;
+            .terminal-body {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated binary background -->
-    <div class="binary-bg" id="binaryContainer"></div>
+    <!-- === 3D CYBERSPACE BACKGROUND (FLOATING HEXAGONS & BINARY RAIN) === -->
+    <canvas id="cyberCanvas"></canvas>
 
     <header>
-        <h1>Welcome to Letsapo Bokang's Cyber Hub</h1>
+        <h1 class="cyber-title">LETSAPO BOKANG</h1>
+        <p style="color: var(--matrix-green); font-size: 1.2rem; letter-spacing: 2px;">
+            CYBERSECURITY ARCHITECT | IT SYSTEMS SPECIALIST
+        </p>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-                <li><a href="education.html">Educational Journey</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user-secret"></i> About</a></li>
+                <li><a href="projects.html"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="contact.html"><i class="fas fa-terminal"></i> Contact</a></li>
+                <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
             </ul>
         </nav>
     </header>
-    
-    <main>
-        <div class="cyber-terminal">
-            <div class="terminal-header">
-                <span class="terminal-btn btn-red"></span>
-                <span class="terminal-btn btn-yellow"></span>
-                <span class="terminal-btn btn-green"></span>
-                <span class="terminal-title">root@bokang-cyber:~</span>
+
+    <main class="cyber-main">
+        <div class="terminal-header">
+            <div class="terminal-btn btn-red"></div>
+            <div class="terminal-btn btn-yellow"></div>
+            <div class="terminal-btn btn-green"></div>
+            <div class="terminal-title">root@bokang-cyber:~</div>
+        </div>
+        <div class="terminal-body">
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="typing-effect">Initializing secure connection...</span>
             </div>
-            <div class="terminal-body">
-                <div class="command-line">
-                    <span class="prompt">$</span>
-                    <span class="typing-effect">Hello World! I'm Letsapo Bokang - IT Technician & Cybersecurity Specialist</span>
-                </div>
-                <div class="command-line" style="animation-delay: 3.5s;">
-                    <span class="prompt">$</span>
-                    <span class="typing-effect" style="animation-delay: 3.5s; animation-duration: 4s;">Securing digital frontiers and building robust systems</span>
-                </div>
-                <div class="command-line" style="animation-delay: 7.5s;">
-                    <span class="prompt">$</span>
-                    <span class="typing-effect" style="animation-delay: 7.5s; animation-duration: 4.5s;">Explore my site to learn more about my work and expertise</span>
-                </div>
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="typing-effect" style="animation-delay: 3s;">Welcome to my cyber domain. I secure networks, build systems, and defend against threats.</span>
+            </div>
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="typing-effect" style="animation-delay: 6s;">Explore my work in IT infrastructure & ethical hacking.</span>
+            </div>
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="typing-effect" style="animation-delay: 9s;">Type <span style="color: var(--neon-blue);">'help'</span> for commands.</span>
             </div>
         </div>
     </main>
-    
+
+    <!-- === AI VOICE ASSISTANT (OPTIONAL) === -->
+    <div class="voice-assistant" title="Activate AI Assistant">
+        <i class="fas fa-robot"></i>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Letsapo Bokang <span class="shield-icon">🛡️</span></p>
+        <p class="cyber-footer">
+            &copy; 2025 Letsapo Bokang <span class="shield-icon">🛡️</span>
+        </p>
     </footer>
 
+    <!-- === 3D CYBERSPACE SCRIPT === -->
     <script>
-        // Generate random binary code background
-        document.addEventListener('DOMContentLoaded', function() {
-            const binaryContainer = document.getElementById('binaryContainer');
-            const binaryChars = ['0', '1', '0', '1', '0', '1', '0', '1'];
-            
-            for (let i = 0; i < 50; i++) {
-                const binaryElement = document.createElement('div');
-                binaryElement.className = 'binary-code';
-                binaryElement.style.left = Math.random() * 100 + 'vw';
-                binaryElement.style.animationDelay = Math.random() * 15 + 's';
-                binaryElement.style.animationDuration = 10 + Math.random() * 20 + 's';
-                
-                let binaryText = '';
-                const length = 20 + Math.floor(Math.random() * 30);
-                for (let j = 0; j < length; j++) {
-                    binaryText += binaryChars[Math.floor(Math.random() * binaryChars.length)] + ' ';
-                }
-                
-                binaryElement.textContent = binaryText;
-                binaryContainer.appendChild(binaryElement);
+        // Floating hexagon & binary rain background
+        const canvas = document.getElementById('cyberCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Hexagon grid
+        class Hexagon {
+            constructor(x, y, size) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = `rgba(0, 240, 255, ${Math.random() * 0.1 + 0.05})`;
+                this.speed = Math.random() * 0.5 + 0.1;
             }
+
+            draw() {
+                ctx.beginPath();
+                for (let i = 0; i < 6; i++) {
+                    const angle = (i * 2 * Math.PI / 6) + Math.PI / 6;
+                    const x = this.x + this.size * Math.cos(angle);
+                    const y = this.y + this.size * Math.sin(angle);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height + this.size * 2) {
+                    this.y = -this.size * 2;
+                    this.x = Math.random() * canvas.width;
+                }
+                this.draw();
+            }
+        }
+
+        // Binary rain
+        class Binary {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -100;
+                this.speed = Math.random() * 3 + 1;
+                this.value = Math.random() > 0.5 ? '1' : '0';
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(0, 255, 136, ${this.opacity})`;
+                ctx.font = '14px Courier New';
+                ctx.fillText(this.value, this.x, this.y);
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = Math.random() * -50;
+                    this.x = Math.random() * canvas.width;
+                }
+                this.draw();
+            }
+        }
+
+        // Initialize objects
+        const hexagons = [];
+        const binaries = [];
+
+        for (let i = 0; i < 20; i++) {
+            const size = Math.random() * 30 + 10;
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            hexagons.push(new Hexagon(x, y, size));
+        }
+
+        for (let i = 0; i < 100; i++) {
+            binaries.push(new Binary());
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 18, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            hexagons.forEach(hex => hex.update());
+            binaries.forEach(bin => bin.update());
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Voice assistant interaction
+        const voiceBtn = document.querySelector('.voice-assistant');
+        voiceBtn.addEventListener('click', () => {
+            const speech = new SpeechSynthesisUtterance();
+            speech.text = "Welcome to Letsapo Bokang's cybersecurity portfolio. How can I assist you?";
+            speech.rate = 0.9;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
             
-            // Make terminal commands interactive
-            const commands = document.querySelectorAll('.typing-effect');
-            commands.forEach((cmd, index) => {
-                cmd.style.animationDelay = `${index * 3.5}s`;
-            });
+            voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+            setTimeout(() => {
+                voiceBtn.innerHTML = '<i class="fas fa-robot"></i>';
+            }, 3000);
         });
     </script>
 </body>
