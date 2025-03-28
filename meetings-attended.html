@@ -3,76 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meetings Attended</title>
+    <title>📡 Meetings Attended | Letsapo Bokang - Cybersecurity Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --neon-blue: #00f0ff;
+            --cyber-purple: #bd00ff;
+            --matrix-green: #00ff88;
+            --dark-bg: #0a0a12;
+            --terminal-bg: rgba(10, 10, 18, 0.9);
+            --glow: 0 0 15px;
+        }
+
+        /* === CYBERPUNK BODY STYLING === */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff; /* Sky Blue Background */
-            color: #333;
             margin: 0;
             padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(189, 0, 255, 0.05) 0%, transparent 20%);
+            overflow-x: hidden;
+            min-height: 100vh;
         }
+
+        /* === CYBER-HEADER WITH ANIMATED GLOW === */
         header {
-            background-color: #87ceeb;
-            padding: 20px;
+            background: rgba(10, 10, 18, 0.8);
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            padding: 1.5rem 0;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
-        h1 {
+
+        .cyber-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
             margin: 0;
-            font-size: 36px;
-            color: #fff;
+            background: linear-gradient(90deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            animation: flicker 3s infinite alternate;
         }
-        .meetings-list {
-            padding: 20px;
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--cyber-purple),
+                    0 0 20px rgba(0, 240, 255, 0.3);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
         }
-        .meeting-item {
-            background-color: #e0f7fa;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
+
+        /* === CYBER NAVIGATION (HOVER GLOW EFFECT) === */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
-        .meeting-item a {
-            color: #007b7f;
+
+        nav ul li a {
             text-decoration: none;
-            font-weight: bold;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .meeting-item a:hover {
-            text-decoration: underline;
+
+        nav ul li a:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: translateY(-3px);
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                var(--neon-blue),
+                transparent
+            );
+            transform: rotate(30deg);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        nav ul li a:hover::before {
+            opacity: 0.6;
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* === MAIN CONTENT === */
+        main {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .meetings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meeting-card {
+            background: var(--terminal-bg);
+            border: 1px solid var(--matrix-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meeting-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 240, 255, 0.05),
+                rgba(189, 0, 255, 0.05)
+            );
+            z-index: -1;
+        }
+
+        .meeting-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+            border-color: var(--neon-blue);
+        }
+
+        .meeting-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .meeting-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--matrix-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .meeting-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .meeting-link:hover {
+            color: var(--neon-blue);
+        }
+
+        .meeting-link:hover::after {
+            width: 100%;
+        }
+
+        .meeting-icon {
+            font-size: 2rem;
+            color: var(--matrix-green);
+            margin-bottom: 1rem;
+        }
+
+        /* === FOOTER (ANIMATED SHIELD) === */
+        footer {
+            background: rgba(10, 10, 18, 0.8);
+            border-top: 1px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cyber-footer {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .shield-icon {
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite, rotate 10s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .cyber-title {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .meetings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cyber-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-
-
     <header>
-        <h1>Meetings Attended</h1>
+        <h1 class="cyber-title">MEETINGS ATTENDED</h1>
         <nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="meetings-attended.html">Meetings Attended</a></li>
-        <!-- Other pages -->
-    </ul>
-</nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-user-secret"></i> About</a></li>
+                <li><a href="projects.html"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="contact.html"><i class="fas fa-terminal"></i> Contact</a></li>
+                <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li><a href="meetings-attended.html"><i class="fas fa-calendar-check"></i> Meetings</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="meetings-list">
-        <div class="meeting-item">
-            <p><strong>Cybersecurity Awareness Workshop</strong></p>
-            <p><a href="https://web.facebook.com/share/p/18FtBKR1Nu/">American Conner</a></p>
-        </div>
+    <main>
+        <div class="meetings-grid">
+            <!-- Cybersecurity Workshop Card -->
+            <div class="meeting-card">
+                <div class="meeting-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Cybersecurity Awareness Workshop</h3>
+                <p>Attended an intensive workshop on modern cybersecurity threats and defense strategies.</p>
+                <a href="https://web.facebook.com/share/p/18FtBKR1Nu/" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Event Details
+                </a>
+            </div>
 
-        <div class="meeting-item">
-            <p><strong>RSL Hackathon 2025 Competition</strong></p>
-            <p><a href="https://web.facebook.com/share/p/1FGQSfDToQ/">Competition to come up with a solution to Revenue Service Lesotho Refund Payment System</a></p>
-        </div>
+            <!-- Hackathon Competition Card -->
+            <div class="meeting-card">
+                <div class="meeting-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>RSL Hackathon 2025 Competition</h3>
+                <p>Competed to develop innovative solutions for Revenue Service Lesotho's Refund Payment System.</p>
+                <a href="https://web.facebook.com/share/p/1FGQSfDToQ/" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Competition Details
+                </a>
+            </div>
 
-        <div class="meeting-item">
-            <p><strong>Limkokwing University Cybersecurity Community Meetup</strong></p>
-            <p><a href="link-to-meeting-details-3/"> Here we meet as to give birth to Limkokwing University Cybersecurity Community that will teach young minds about securing digital world and make them  aware of Cyber crime, Cybersecurity, also how to avoid them  </a></p>
+            <!-- University Community Card -->
+            <div class="meeting-card">
+                <div class="meeting-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Limkokwing Cybersecurity Community</h3>
+                <p>Helped establish a cybersecurity community to educate students about digital security and cybercrime prevention.</p>
+                <a href="#" class="meeting-link">
+                    <i class="fas fa-info-circle"></i> Community Initiative
+                </a>
+            </div>
         </div>
+    </main>
 
-        <!-- Add more meetings as needed -->
-    </div>
+    <footer>
+        <p class="cyber-footer">
+            &copy; 2025 Letsapo Bokang <span class="shield-icon">🛡️</span>
+        </p>
+    </footer>
+
+    <!-- Optional: Floating Binary Background Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const binaryChars = ['0', '1'];
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '-1';
+            container.style.overflow = 'hidden';
+            document.body.appendChild(container);
+
+            for (let i = 0; i < 50; i++) {
+                const binary = document.createElement('div');
+                binary.style.position = 'absolute';
+                binary.style.color = `rgba(0, 255, 136, ${Math.random() * 0.2 + 0.1})`;
+                binary.style.fontSize = `${Math.random() * 12 + 10}px`;
+                binary.style.left = `${Math.random() * 100}vw`;
+                binary.style.top = `${Math.random() * 100}vh`;
+                binary.style.animation = `fall ${Math.random() * 10 + 5}s linear infinite`;
+                binary.style.animationDelay = `${Math.random() * 5}s`;
+                
+                let text = '';
+                for (let j = 0; j < 10; j++) {
+                    text += binaryChars[Math.floor(Math.random() * 2)] + ' ';
+                }
+                binary.textContent = text;
+                container.appendChild(binary);
+            }
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fall {
+                    0% { transform: translateY(-100px); }
+                    100% { transform: translateY(calc(100vh + 100px)); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
