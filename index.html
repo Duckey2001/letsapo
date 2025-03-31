@@ -38,6 +38,52 @@
             opacity: 0.8;
         }
 
+        /* === NAVIGATION === */
+        nav {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            border-radius: 8px;
+            border: 1px solid var(--neon-blue);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        nav a i {
+            color: var(--matrix-green);
+        }
+
         /* === PROFILE SECTION === */
         .profile-container {
             display: flex;
@@ -119,11 +165,13 @@
             border-radius: 5px;
             padding: 0.8rem;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .tool-card:hover {
             background: rgba(85, 124, 148, 0.4);
             transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--kali-purple);
         }
 
         .tool-name {
@@ -181,6 +229,8 @@
             padding: 2rem;
             font-family: 'Courier New', monospace;
             min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
         .command-line {
@@ -245,7 +295,8 @@
             position: fixed;
             bottom: 100px;
             right: 2rem;
-            width: 300px;
+            width: 350px;
+            height: 400px;
             background: var(--terminal-bg);
             border: 1px solid var(--matrix-green);
             border-radius: 8px;
@@ -253,21 +304,66 @@
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
             display: none;
             z-index: 101;
+            flex-direction: column;
+        }
+
+        .ai-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--matrix-green);
+        }
+
+        .ai-title {
+            color: var(--matrix-green);
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .ai-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
         }
 
         .ai-message {
             color: var(--matrix-green);
             margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .user-message {
+            color: var(--neon-blue);
+            text-align: right;
+        }
+
+        .ai-input-container {
+            display: flex;
+            gap: 0.5rem;
         }
 
         .ai-input {
-            width: 100%;
+            flex-grow: 1;
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--neon-blue);
             color: white;
             padding: 0.5rem;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
+        }
+
+        .ai-send {
+            background: var(--matrix-green);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         /* === RESPONSIVE DESIGN === */
@@ -282,8 +378,13 @@
             }
             
             .ai-panel {
-                width: 250px;
+                width: 280px;
                 right: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -322,27 +423,27 @@
         <p>As a certified Ethical Hacker, I'm proficient with Kali Linux's powerful penetration testing tools:</p>
         
         <div class="kali-tools">
-            <div class="tool-card">
+            <div class="tool-card" data-tool="metasploit">
                 <h3 class="tool-name">Metasploit Framework</h3>
                 <p class="tool-desc">Penetration testing software for developing and executing exploit code</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-card" data-tool="nmap">
                 <h3 class="tool-name">Nmap</h3>
                 <p class="tool-desc">Network discovery and security auditing tool</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-card" data-tool="burp">
                 <h3 class="tool-name">Burp Suite</h3>
                 <p class="tool-desc">Web application security testing platform</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-card" data-tool="wireshark">
                 <h3 class="tool-name">Wireshark</h3>
                 <p class="tool-desc">Network protocol analyzer for troubleshooting and analysis</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-card" data-tool="john">
                 <h3 class="tool-name">John the Ripper</h3>
                 <p class="tool-desc">Password cracking utility</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-card" data-tool="aircrack">
                 <h3 class="tool-name">Aircrack-ng</h3>
                 <p class="tool-desc">WiFi security auditing tools suite</p>
             </div>
@@ -364,7 +465,7 @@
             </div>
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span>Try these commands: <span style="color: var(--neon-blue);">help</span>, <span style="color: var(--neon-blue);">about</span>, <span style="color: var(--neon-blue);">skills</span>, <span style="color: var(--neon-blue);">clear</span></span>
+                <span>Try these commands: <span style="color: var(--neon-blue);">help</span>, <span style="color: var(--neon-blue);">about</span>, <span style="color: var(--neon-blue);">skills</span>, <span style="color: var(--neon-blue);">clear</span>, <span style="color: var(--neon-blue);">tools</span></span>
             </div>
             <div class="command-line">
                 <span class="prompt">$</span>
@@ -379,8 +480,22 @@
         <i class="fas fa-robot" id="ai-icon"></i>
     </div>
     <div class="ai-panel" id="ai-panel">
-        <p class="ai-message">Hello! I'm your cybersecurity assistant. How can I help?</p>
-        <input type="text" class="ai-input" placeholder="Ask me anything..." id="ai-input">
+        <div class="ai-header">
+            <h3 class="ai-title">Cybersecurity Assistant</h3>
+        </div>
+        <div class="ai-messages" id="ai-messages">
+            <div class="ai-message">
+                Hello! I'm your cybersecurity assistant. Ask me about:<br>
+                • Kali Linux tools<br>
+                • Cybersecurity concepts<br>
+                • Letsapo's experience<br>
+                • Ethical hacking techniques
+            </div>
+        </div>
+        <div class="ai-input-container">
+            <input type="text" class="ai-input" placeholder="Ask me anything..." id="ai-input">
+            <button class="ai-send" id="ai-send">Send</button>
+        </div>
     </div>
 
     <footer>
@@ -503,34 +618,136 @@
                 • about - My professional background<br>
                 • skills - My technical skills<br>
                 • kali - Kali Linux tools I use<br>
+                • tools - Detailed info about specific tools<br>
                 • contact - How to reach me<br>
                 • clear - Clear terminal<br>
-                • social - My social media links`
+                • social - My social media links<br>
+                • education - My certifications and education`
             },
             about: {
                 output: `<span style="color: var(--matrix-green);">About Letsapo Bokang:</span><br>
-                Cybersecurity Specialist | Ethical Hacker | IT Technician<br>
-                Passionate about securing digital systems and educating others about cyber threats.`
+                Cybersecurity Specialist | Ethical Hacker | IT Technician<br><br>
+                Passionate about securing digital systems and educating others about cyber threats.<br>
+                Certified Ethical Hacker with extensive experience in penetration testing<br>
+                and vulnerability assessment.`
             },
             skills: {
                 output: `<span style="color: var(--matrix-green);">Technical Skills:</span><br>
-                • Penetration Testing<br>
-                • Network Security<br>
-                • Ethical Hacking<br>
+                • Penetration Testing (Metasploit, Burp Suite)<br>
+                • Network Security (Nmap, Wireshark)<br>
+                • Ethical Hacking Techniques<br>
                 • Vulnerability Assessment<br>
-                • Kali Linux Tools<br>
-                • Python/C++/JavaScript`
+                • Kali Linux Tools Expertise<br>
+                • Programming: Python, C++, JavaScript<br>
+                • Security Compliance & Best Practices`
             },
             kali: {
                 output: `<span style="color: var(--matrix-green);">Kali Linux Expertise:</span><br>
-                Proficient with Metasploit, Nmap, Burp Suite, Wireshark,<br>
-                John the Ripper, Aircrack-ng, and other security tools.`
+                Proficient with all major security tools in Kali Linux including:<br>
+                • Metasploit Framework<br>
+                • Nmap<br>
+                • Burp Suite<br>
+                • Wireshark<br>
+                • John the Ripper<br>
+                • Aircrack-ng<br><br>
+                Type 'tools [tool-name]' for detailed info about a specific tool.`
+            },
+            tools: {
+                output: `<span style="color: var(--matrix-green);">Available Tools Info:</span><br>
+                • metasploit - Penetration testing framework<br>
+                • nmap - Network mapper<br>
+                • burp - Web app testing suite<br>
+                • wireshark - Network protocol analyzer<br>
+                • john - Password cracker<br>
+                • aircrack - WiFi security tools<br><br>
+                Example: 'tools metasploit' for detailed info`
+            },
+            metasploit: {
+                output: `<span style="color: var(--matrix-green);">Metasploit Framework:</span><br>
+                The Metasploit Framework is a penetration testing platform that enables you to:<br>
+                • Develop and execute exploit code against remote targets<br>
+                • Perform security vulnerability validation<br>
+                • Conduct security awareness training<br>
+                • Implement defensive countermeasures<br><br>
+                <span style="color: var(--neon-blue);">Common Commands:</span><br>
+                msfconsole - Launch the framework<br>
+                search [exploit] - Search for modules<br>
+                use [module] - Select a module<br>
+                show options - Display module options<br>
+                exploit - Run the selected module`
+            },
+            nmap: {
+                output: `<span style="color: var(--matrix-green);">Nmap (Network Mapper):</span><br>
+                Nmap is a network discovery and security auditing tool that can:<br>
+                • Discover hosts and services on a computer network<br>
+                • Detect operating systems and service versions<br>
+                • Identify open ports and potential vulnerabilities<br><br>
+                <span style="color: var(--neon-blue);">Common Commands:</span><br>
+                nmap -sS [target] - Stealth SYN scan<br>
+                nmap -sV [target] - Version detection<br>
+                nmap -O [target] - OS detection<br>
+                nmap -A [target] - Aggressive scan<br>
+                nmap -p [ports] [target] - Scan specific ports`
+            },
+            burp: {
+                output: `<span style="color: var(--matrix-green);">Burp Suite:</span><br>
+                Burp Suite is an integrated platform for performing security testing of web applications:<br>
+                • Intercepting proxy for traffic inspection<br>
+                • Web vulnerability scanner<br>
+                • Advanced manual testing tools<br>
+                • Automation capabilities for repetitive tasks<br><br>
+                <span style="color: var(--neon-blue);">Key Features:</span><br>
+                • Target analyzer for attack surface mapping<br>
+                • Scanner for automated vulnerability detection<br>
+                • Intruder for customized attacks<br>
+                • Repeater for manual request manipulation`
+            },
+            wireshark: {
+                output: `<span style="color: var(--matrix-green);">Wireshark:</span><br>
+                Wireshark is a network protocol analyzer that lets you:<br>
+                • Capture and interactively browse network traffic<br>
+                • Inspect hundreds of protocols<br>
+                • Perform deep inspection of network packets<br>
+                • Analyze VoIP calls and other complex traffic<br><br>
+                <span style="color: var(--neon-blue);">Common Uses:</span><br>
+                • Network troubleshooting<br>
+                • Security incident analysis<br>
+                • Protocol development<br>
+                • Network forensics<br>
+                • Education about network protocols`
+            },
+            john: {
+                output: `<span style="color: var(--matrix-green);">John the Ripper:</span><br>
+                John the Ripper is a fast password cracker that supports:<br>
+                • Multiple hash types and encryption algorithms<br>
+                • Dictionary attacks and brute-force modes<br>
+                • Custom wordlist generation and mangling rules<br>
+                • Distributed cracking across multiple systems<br><br>
+                <span style="color: var(--neon-blue);">Common Commands:</span><br>
+                john [hashfile] - Default cracking mode<br>
+                john --wordlist=[wordlist] [hashfile] - Dictionary attack<br>
+                john --show [hashfile] - Show cracked passwords<br>
+                john --format=[format] [hashfile] - Specify hash format`
+            },
+            aircrack: {
+                output: `<span style="color: var(--matrix-green);">Aircrack-ng:</span><br>
+                Aircrack-ng is a complete suite of tools for WiFi network auditing:<br>
+                • Monitoring: Packet capture and export<br>
+                • Attacking: Replay, deauthentication, fake access points<br>
+                • Testing: WiFi cards and driver capabilities<br>
+                • Cracking: WEP and WPA/WPA2-PSK<br><br>
+                <span style="color: var(--neon-blue);">Common Workflow:</span><br>
+                1. airmon-ng start [interface] - Start monitor mode<br>
+                2. airodump-ng [interface] - Capture packets<br>
+                3. aireplay-ng - Deauth clients (for WPA handshake)<br>
+                4. aircrack-ng - Crack captured handshake with wordlist`
             },
             contact: {
                 output: `<span style="color: var(--matrix-green);">Contact Information:</span><br>
                 Email: your.email@example.com<br>
                 Phone: +266 57620256<br>
-                LinkedIn: linkedin.com/in/yourprofile`
+                LinkedIn: linkedin.com/in/yourprofile<br>
+                GitHub: github.com/yourusername`
             },
             clear: {
                 output: '',
@@ -542,42 +759,66 @@
                 output: `<span style="color: var(--matrix-green);">Social Media:</span><br>
                 • Facebook: facebook.com/yourprofile<br>
                 • LinkedIn: linkedin.com/in/yourprofile<br>
-                • GitHub: github.com/yourusername`
+                • GitHub: github.com/yourusername<br>
+                • Twitter: twitter.com/yourhandle`
+            },
+            education: {
+                output: `<span style="color: var(--matrix-green);">Education & Certifications:</span><br>
+                • Certified Ethical Hacker (CEH)<br>
+                • CompTIA Security+<br>
+                • Offensive Security Certified Professional (OSCP)<br>
+                • Bachelor's in Computer Science<br>
+                • Multiple Kali Linux specialist certifications`
             }
         };
 
         commandInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                const command = this.value.trim().toLowerCase();
+                processCommand(this.value.trim().toLowerCase());
                 this.value = '';
-                
-                // Add the command to output
-                const commandLine = document.createElement('div');
-                commandLine.className = 'command-line';
-                commandLine.innerHTML = `<span class="prompt">$</span> ${command}`;
-                commandOutput.appendChild(commandLine);
-                
-                // Process command
-                if (commands[command]) {
-                    if (commands[command].action) {
-                        commands[command].action();
-                    } else {
-                        const outputDiv = document.createElement('div');
-                        outputDiv.className = 'command-output';
-                        outputDiv.innerHTML = commands[command].output;
-                        commandOutput.appendChild(outputDiv);
-                    }
+            }
+        });
+
+        function processCommand(command) {
+            // Add the command to output
+            const commandLine = document.createElement('div');
+            commandLine.className = 'command-line';
+            commandLine.innerHTML = `<span class="prompt">$</span> ${command}`;
+            commandOutput.appendChild(commandLine);
+            
+            // Process command
+            if (command.startsWith('tools ')) {
+                const tool = command.split(' ')[1];
+                if (commands[tool]) {
+                    const outputDiv = document.createElement('div');
+                    outputDiv.className = 'command-output';
+                    outputDiv.innerHTML = commands[tool].output;
+                    commandOutput.appendChild(outputDiv);
                 } else {
                     const outputDiv = document.createElement('div');
                     outputDiv.className = 'command-output';
-                    outputDiv.innerHTML = `<span style="color: #ff5f56;">Command not found. Type 'help' for available commands.</span>`;
+                    outputDiv.innerHTML = `<span style="color: #ff5f56;">Tool not found. Type 'tools' for available options.</span>`;
                     commandOutput.appendChild(outputDiv);
                 }
-                
-                // Scroll to bottom
-                terminalBody.scrollTop = terminalBody.scrollHeight;
+            } else if (commands[command]) {
+                if (commands[command].action) {
+                    commands[command].action();
+                } else {
+                    const outputDiv = document.createElement('div');
+                    outputDiv.className = 'command-output';
+                    outputDiv.innerHTML = commands[command].output;
+                    commandOutput.appendChild(outputDiv);
+                }
+            } else {
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'command-output';
+                outputDiv.innerHTML = `<span style="color: #ff5f56;">Command not found. Type 'help' for available commands.</span>`;
+                commandOutput.appendChild(outputDiv);
             }
-        });
+            
+            // Scroll to bottom
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
 
         // Terminal buttons functionality
         document.getElementById('close-terminal').addEventListener('click', function() {
@@ -592,48 +833,162 @@
             alert('Terminal maximized (simulated).');
         });
 
+        // === KALI TOOLS CLICK HANDLERS ===
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const tool = this.getAttribute('data-tool');
+                let toolName = '';
+                
+                switch(tool) {
+                    case 'metasploit':
+                        toolName = 'metasploit';
+                        break;
+                    case 'nmap':
+                        toolName = 'nmap';
+                        break;
+                    case 'burp':
+                        toolName = 'burp';
+                        break;
+                    case 'wireshark':
+                        toolName = 'wireshark';
+                        break;
+                    case 'john':
+                        toolName = 'john';
+                        break;
+                    case 'aircrack':
+                        toolName = 'aircrack';
+                        break;
+                }
+                
+                // Add command to terminal
+                commandInput.value = `tools ${toolName}`;
+                processCommand(`tools ${toolName}`);
+            });
+        });
+
         // === AI ASSISTANT ===
         const aiAssistant = document.getElementById('ai-assistant');
         const aiPanel = document.getElementById('ai-panel');
         const aiIcon = document.getElementById('ai-icon');
         const aiInput = document.getElementById('ai-input');
+        const aiMessages = document.getElementById('ai-messages');
+        const aiSend = document.getElementById('ai-send');
 
+        // Toggle AI panel
         aiAssistant.addEventListener('click', function() {
-            if (aiPanel.style.display === 'block') {
+            if (aiPanel.style.display === 'flex') {
                 aiPanel.style.display = 'none';
                 aiIcon.className = 'fas fa-robot';
             } else {
-                aiPanel.style.display = 'block';
+                aiPanel.style.display = 'flex';
                 aiIcon.className = 'fas fa-times';
                 aiInput.focus();
             }
         });
 
-        aiInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const question = this.value.trim();
-                this.value = '';
+        // Send message function
+        function sendAIMessage() {
+            const question = aiInput.value.trim();
+            if (!question) return;
+            
+            aiInput.value = '';
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'ai-message user-message';
+            userMessage.textContent = question;
+            aiMessages.appendChild(userMessage);
+            
+            // Add thinking indicator
+            const thinking = document.createElement('div');
+            thinking.className = 'ai-message';
+            thinking.textContent = 'Thinking...';
+            aiMessages.appendChild(thinking);
+            
+            // Scroll to bottom
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+            
+            // Simulate API call (in a real app, this would be a fetch to your backend)
+            setTimeout(() => {
+                // Remove thinking indicator
+                aiMessages.removeChild(thinking);
                 
-                // Simple responses
-                let response = "I'm an AI assistant. In a full implementation, I would respond intelligently to your query.";
+                // Generate response (in a real app, this would come from your API)
+                const response = generateAIResponse(question);
                 
-                if (question.toLowerCase().includes('hello') || question.toLowerCase().includes('hi')) {
-                    response = "Hello! How can I help you today?";
-                } else if (question.toLowerCase().includes('contact')) {
-                    response = "You can contact Letsapo via email at your.email@example.com or phone at +266 57620256";
-                } else if (question.toLowerCase().includes('kali')) {
-                    response = "Letsapo is proficient with Kali Linux tools including Metasploit, Nmap, Burp Suite, and more.";
-                }
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'ai-message';
-                messageDiv.textContent = response;
-                aiPanel.insertBefore(messageDiv, aiInput);
+                // Add AI response
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'ai-message';
+                aiMessage.innerHTML = response;
+                aiMessages.appendChild(aiMessage);
                 
                 // Scroll to bottom
-                aiPanel.scrollTop = aiPanel.scrollHeight;
+                aiMessages.scrollTop = aiMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Generate AI response (simulated - replace with real API call)
+        function generateAIResponse(question) {
+            question = question.toLowerCase();
+            
+            // Simple responses for demo purposes
+            if (question.includes('hello') || question.includes('hi')) {
+                return "Hello! How can I assist you with cybersecurity today?";
+            } else if (question.includes('contact')) {
+                return "You can contact Letsapo via:<br><br>" +
+                       "• Email: your.email@example.com<br>" +
+                       "• Phone: +266 57620256<br>" +
+                       "• LinkedIn: linkedin.com/in/yourprofile";
+            } else if (question.includes('kali') || question.includes('tools')) {
+                return "Letsapo is proficient with these Kali Linux tools:<br><br>" +
+                       "• <strong>Metasploit</strong> - Penetration testing framework<br>" +
+                       "• <strong>Nmap</strong> - Network discovery tool<br>" +
+                       "• <strong>Burp Suite</strong> - Web app testing<br>" +
+                       "• <strong>Wireshark</strong> - Network analyzer<br>" +
+                       "• <strong>John the Ripper</strong> - Password cracker<br>" +
+                       "• <strong>Aircrack-ng</strong> - WiFi security tools<br><br>" +
+                       "Ask about any specific tool for more details.";
+            } else if (question.includes('metasploit')) {
+                return "<strong>Metasploit Framework</strong><br><br>" +
+                       "The Metasploit Framework is an advanced open-source platform for developing, testing, and using exploit code. It's used for:<br>" +
+                       "• Penetration testing<br>" +
+                       "• IDS signature development<br>" +
+                       "• Security research<br><br>" +
+                       "Letsapo uses Metasploit for ethical hacking and security assessments.";
+            } else if (question.includes('nmap')) {
+                return "<strong>Nmap (Network Mapper)</strong><br><br>" +
+                       "Nmap is a network scanning tool used for:<br>" +
+                       "• Network discovery<br>" +
+                       "• Security auditing<br>" +
+                       "• Service/version detection<br>" +
+                       "• OS fingerprinting<br><br>" +
+                       "Letsapo uses Nmap for network reconnaissance and vulnerability assessment.";
+            } else if (question.includes('experience') || question.includes('background')) {
+                return "Letsapo Bokang has extensive experience in:<br><br>" +
+                       "• Ethical hacking and penetration testing<br>" +
+                       "• Network security assessments<br>" +
+                       "• Vulnerability research<br>" +
+                       "• Security awareness training<br><br>" +
+                       "With multiple cybersecurity certifications and hands-on experience with Kali Linux tools.";
+            } else {
+                // Default response (in a real app, this would call an AI API)
+                return "I'm a cybersecurity assistant. In a full implementation, I would provide detailed answers to your questions about:<br><br>" +
+                       "• Kali Linux tools<br>" +
+                       "• Ethical hacking techniques<br>" +
+                       "• Cybersecurity best practices<br>" +
+                       "• Letsapo's professional experience<br><br>" +
+                       "Try asking about specific tools like Metasploit or Nmap.";
+            }
+        }
+
+        // Event listeners for AI input
+        aiInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendAIMessage();
             }
         });
+
+        aiSend.addEventListener('click', sendAIMessage);
     </script>
 </body>
 </html>
