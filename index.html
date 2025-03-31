@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 Letsapo Bokang | Cybersecurity Architect & IT Specialist</title>
+    <title>🚀 Letsapo Bokang | Cybersecurity Specialist & Ethical Hacker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --neon-blue: #00f0ff;
             --cyber-purple: #bd00ff;
             --matrix-green: #00ff88;
+            --kali-purple: #557C94;
             --dark-bg: #0a0a12;
             --terminal-bg: rgba(10, 10, 18, 0.85);
         }
@@ -36,102 +38,107 @@
             opacity: 0.8;
         }
 
-        /* === CYBERPUNK HEADER === */
-        header {
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .cyber-title {
-            font-size: 3.5rem;
-            margin: 0;
-            background: linear-gradient(90deg, var(--neon-blue), var(--cyber-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-            letter-spacing: 3px;
-            font-weight: 700;
-            animation: flicker 2s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 
-                    0 0 10px var(--neon-blue),
-                    0 0 20px var(--cyber-purple),
-                    0 0 30px rgba(0, 240, 255, 0.5);
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-            }
-        }
-
-        /* === CYBER NAVIGATION (HOVER GLOW) === */
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
+        /* === PROFILE SECTION === */
+        .profile-container {
             display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 1.5rem;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 4px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--neon-blue);
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--matrix-green);
+            object-fit: cover;
+            box-shadow: 0 0 20px var(--matrix-green);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        nav ul li a::before {
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        /* === KALI LINUX SECTION === */
+        .kali-section {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--kali-purple);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .kali-section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(
-                to bottom right,
-                transparent,
-                transparent,
-                var(--neon-blue),
+                135deg,
+                rgba(85, 124, 148, 0.1),
                 transparent
             );
-            transform: rotate(30deg);
-            opacity: 0;
-            transition: all 0.5s ease;
+            pointer-events: none;
         }
 
-        nav ul li a:hover {
-            background: rgba(0, 240, 255, 0.1);
-            box-shadow: 0 0 20px var(--neon-blue);
+        .kali-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .kali-logo {
+            width: 50px;
+            margin-right: 1rem;
+        }
+
+        .kali-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--kali-purple);
+            margin: 0;
+        }
+
+        .kali-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tool-card {
+            background: rgba(85, 124, 148, 0.2);
+            border: 1px solid var(--kali-purple);
+            border-radius: 5px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            background: rgba(85, 124, 148, 0.4);
             transform: translateY(-3px);
         }
 
-        nav ul li a:hover::before {
-            opacity: 0.6;
-            animation: shine 1.5s infinite;
+        .tool-name {
+            color: var(--neon-blue);
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
         }
 
-        @keyframes shine {
-            0% { transform: rotate(30deg) translate(-30%, -30%); }
-            100% { transform: rotate(30deg) translate(30%, 30%); }
+        .tool-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
         }
 
-        /* === MAIN TERMINAL (HACKER STYLE) === */
+        /* === MAIN TERMINAL (INTERACTIVE) === */
         .cyber-main {
             max-width: 900px;
             margin: 3rem auto;
@@ -156,6 +163,7 @@
             height: 14px;
             border-radius: 50%;
             margin-right: 8px;
+            cursor: pointer;
         }
 
         .btn-red { background: #ff5f56; }
@@ -172,11 +180,13 @@
         .terminal-body {
             padding: 2rem;
             font-family: 'Courier New', monospace;
-            min-height: 200px;
+            min-height: 300px;
         }
 
         .command-line {
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
         }
 
         .prompt {
@@ -185,33 +195,30 @@
             font-weight: bold;
         }
 
-        .typing-effect {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid var(--matrix-green);
-            animation: 
-                typing 3s steps(40, end) forwards,
-                blink-caret 0.75s step-end infinite;
+        .command-input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            width: 80%;
+            outline: none;
+            caret-color: var(--matrix-green);
         }
 
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .command-output {
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
         }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--matrix-green) }
-        }
-
-        /* === AI VOICE ASSISTANT BUTTON === */
-        .voice-assistant {
+        /* === AI ASSISTANT === */
+        .ai-assistant {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--neon-blue);
             border-radius: 50%;
             display: flex;
@@ -223,83 +230,78 @@
             z-index: 100;
         }
 
-        .voice-assistant:hover {
+        .ai-assistant:hover {
             transform: scale(1.1);
             box-shadow: 0 0 30px var(--neon-blue);
         }
 
-        .voice-assistant i {
+        .ai-assistant i {
             color: black;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
         }
 
-        /* === FOOTER (ANIMATED SHIELD) === */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            position: relative;
+        .ai-panel {
+            position: fixed;
+            bottom: 100px;
+            right: 2rem;
+            width: 300px;
+            background: var(--terminal-bg);
+            border: 1px solid var(--matrix-green);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            display: none;
+            z-index: 101;
         }
 
-        .cyber-footer {
-            font-size: 1rem;
-            letter-spacing: 1px;
+        .ai-message {
+            color: var(--matrix-green);
+            margin-bottom: 1rem;
         }
 
-        .shield-icon {
-            display: inline-block;
-            margin-left: 10px;
-            animation: pulse 2s infinite, rotate 10s linear infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .ai-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--neon-blue);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
         }
 
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
-            .cyber-title {
-                font-size: 2.5rem;
-            }
-
-            nav ul {
+            .profile-container {
                 flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                text-align: center;
             }
-
-            .cyber-main {
-                margin: 1.5rem;
+            
+            .kali-tools {
+                grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 480px) {
-            .cyber-title {
-                font-size: 2rem;
-            }
-
-            .terminal-body {
-                padding: 1rem;
+            
+            .ai-panel {
+                width: 250px;
+                right: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- === 3D CYBERSPACE BACKGROUND (FLOATING HEXAGONS & BINARY RAIN) === -->
+    <!-- === 3D CYBERSPACE BACKGROUND === -->
     <canvas id="cyberCanvas"></canvas>
 
     <header>
-        <h1 class="cyber-title">LETSAPO BOKANG</h1>
-        <p style="color: var(--matrix-green); font-size: 1.2rem; letter-spacing: 2px;">
-            CYBERSECURITY ARCHITECT | IT SYSTEMS SPECIALIST
-        </p>
+        <div class="profile-container">
+            <img src="your-profile-picture.jpg" alt="Letsapo Bokang" class="profile-pic">
+            <div>
+                <h1 class="cyber-title">LETSAPO BOKANG</h1>
+                <p style="color: var(--matrix-green); font-size: 1.2rem; letter-spacing: 2px;">
+                    CYBERSECURITY SPECIALIST | ETHICAL HACKER | KALI LINUX EXPERT
+                </p>
+            </div>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -311,36 +313,74 @@
         </nav>
     </header>
 
+    <!-- === KALI LINUX SECTION === -->
+    <section class="kali-section">
+        <div class="kali-header">
+            <img src="https://www.kali.org/images/kali-logo.svg" alt="Kali Linux Logo" class="kali-logo">
+            <h2 class="kali-title">KALI LINUX TOOLSET</h2>
+        </div>
+        <p>As a certified Ethical Hacker, I'm proficient with Kali Linux's powerful penetration testing tools:</p>
+        
+        <div class="kali-tools">
+            <div class="tool-card">
+                <h3 class="tool-name">Metasploit Framework</h3>
+                <p class="tool-desc">Penetration testing software for developing and executing exploit code</p>
+            </div>
+            <div class="tool-card">
+                <h3 class="tool-name">Nmap</h3>
+                <p class="tool-desc">Network discovery and security auditing tool</p>
+            </div>
+            <div class="tool-card">
+                <h3 class="tool-name">Burp Suite</h3>
+                <p class="tool-desc">Web application security testing platform</p>
+            </div>
+            <div class="tool-card">
+                <h3 class="tool-name">Wireshark</h3>
+                <p class="tool-desc">Network protocol analyzer for troubleshooting and analysis</p>
+            </div>
+            <div class="tool-card">
+                <h3 class="tool-name">John the Ripper</h3>
+                <p class="tool-desc">Password cracking utility</p>
+            </div>
+            <div class="tool-card">
+                <h3 class="tool-name">Aircrack-ng</h3>
+                <p class="tool-desc">WiFi security auditing tools suite</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- === INTERACTIVE TERMINAL === -->
     <main class="cyber-main">
         <div class="terminal-header">
-            <div class="terminal-btn btn-red"></div>
-            <div class="terminal-btn btn-yellow"></div>
-            <div class="terminal-btn btn-green"></div>
-            <div class="terminal-title">root@bokang-cyber:~</div>
+            <div class="terminal-btn btn-red" id="close-terminal"></div>
+            <div class="terminal-btn btn-yellow" id="minimize-terminal"></div>
+            <div class="terminal-btn btn-green" id="maximize-terminal"></div>
+            <div class="terminal-title">root@kali-terminal:~</div>
         </div>
-        <div class="terminal-body">
+        <div class="terminal-body" id="terminal-body">
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span class="typing-effect">Initializing secure connection...</span>
+                <span>Welcome to my interactive Kali Linux terminal</span>
             </div>
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span class="typing-effect" style="animation-delay: 3s;">Welcome to my cyber domain. I secure networks, build systems, and defend against threats.</span>
+                <span>Try these commands: <span style="color: var(--neon-blue);">help</span>, <span style="color: var(--neon-blue);">about</span>, <span style="color: var(--neon-blue);">skills</span>, <span style="color: var(--neon-blue);">clear</span></span>
             </div>
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span class="typing-effect" style="animation-delay: 6s;">Explore my work in IT infrastructure & ethical hacking.</span>
+                <input type="text" class="command-input" id="command-input" autofocus>
             </div>
-            <div class="command-line">
-                <span class="prompt">$</span>
-                <span class="typing-effect" style="animation-delay: 9s;">Type <span style="color: var(--neon-blue);">'help'</span> for commands.</span>
-            </div>
+            <div id="command-output"></div>
         </div>
     </main>
 
-    <!-- === AI VOICE ASSISTANT (OPTIONAL) === -->
-    <div class="voice-assistant" title="Activate AI Assistant">
-        <i class="fas fa-robot"></i>
+    <!-- === AI ASSISTANT === -->
+    <div class="ai-assistant" id="ai-assistant">
+        <i class="fas fa-robot" id="ai-icon"></i>
+    </div>
+    <div class="ai-panel" id="ai-panel">
+        <p class="ai-message">Hello! I'm your cybersecurity assistant. How can I help?</p>
+        <input type="text" class="ai-input" placeholder="Ask me anything..." id="ai-input">
     </div>
 
     <footer>
@@ -349,15 +389,14 @@
         </p>
     </footer>
 
-    <!-- === 3D CYBERSPACE SCRIPT === -->
     <script>
-        // Floating hexagon & binary rain background
+        // === BACKGROUND ANIMATION ===
         const canvas = document.getElementById('cyberCanvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Hexagon grid
+        // Floating hexagons
         class Hexagon {
             constructor(x, y, size) {
                 this.x = x;
@@ -452,19 +491,148 @@
             canvas.height = window.innerHeight;
         });
 
-        // Voice assistant interaction
-        const voiceBtn = document.querySelector('.voice-assistant');
-        voiceBtn.addEventListener('click', () => {
-            const speech = new SpeechSynthesisUtterance();
-            speech.text = "Welcome to Letsapo Bokang's cybersecurity portfolio. How can I assist you?";
-            speech.rate = 0.9;
-            speech.pitch = 1;
-            window.speechSynthesis.speak(speech);
-            
-            voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-            setTimeout(() => {
-                voiceBtn.innerHTML = '<i class="fas fa-robot"></i>';
-            }, 3000);
+        // === INTERACTIVE TERMINAL ===
+        const commandInput = document.getElementById('command-input');
+        const commandOutput = document.getElementById('command-output');
+        const terminalBody = document.getElementById('terminal-body');
+
+        // Terminal commands
+        const commands = {
+            help: {
+                output: `<span style="color: var(--matrix-green);">Available commands:</span><br>
+                • about - My professional background<br>
+                • skills - My technical skills<br>
+                • kali - Kali Linux tools I use<br>
+                • contact - How to reach me<br>
+                • clear - Clear terminal<br>
+                • social - My social media links`
+            },
+            about: {
+                output: `<span style="color: var(--matrix-green);">About Letsapo Bokang:</span><br>
+                Cybersecurity Specialist | Ethical Hacker | IT Technician<br>
+                Passionate about securing digital systems and educating others about cyber threats.`
+            },
+            skills: {
+                output: `<span style="color: var(--matrix-green);">Technical Skills:</span><br>
+                • Penetration Testing<br>
+                • Network Security<br>
+                • Ethical Hacking<br>
+                • Vulnerability Assessment<br>
+                • Kali Linux Tools<br>
+                • Python/C++/JavaScript`
+            },
+            kali: {
+                output: `<span style="color: var(--matrix-green);">Kali Linux Expertise:</span><br>
+                Proficient with Metasploit, Nmap, Burp Suite, Wireshark,<br>
+                John the Ripper, Aircrack-ng, and other security tools.`
+            },
+            contact: {
+                output: `<span style="color: var(--matrix-green);">Contact Information:</span><br>
+                Email: your.email@example.com<br>
+                Phone: +266 57620256<br>
+                LinkedIn: linkedin.com/in/yourprofile`
+            },
+            clear: {
+                output: '',
+                action: function() {
+                    commandOutput.innerHTML = '';
+                }
+            },
+            social: {
+                output: `<span style="color: var(--matrix-green);">Social Media:</span><br>
+                • Facebook: facebook.com/yourprofile<br>
+                • LinkedIn: linkedin.com/in/yourprofile<br>
+                • GitHub: github.com/yourusername`
+            }
+        };
+
+        commandInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase();
+                this.value = '';
+                
+                // Add the command to output
+                const commandLine = document.createElement('div');
+                commandLine.className = 'command-line';
+                commandLine.innerHTML = `<span class="prompt">$</span> ${command}`;
+                commandOutput.appendChild(commandLine);
+                
+                // Process command
+                if (commands[command]) {
+                    if (commands[command].action) {
+                        commands[command].action();
+                    } else {
+                        const outputDiv = document.createElement('div');
+                        outputDiv.className = 'command-output';
+                        outputDiv.innerHTML = commands[command].output;
+                        commandOutput.appendChild(outputDiv);
+                    }
+                } else {
+                    const outputDiv = document.createElement('div');
+                    outputDiv.className = 'command-output';
+                    outputDiv.innerHTML = `<span style="color: #ff5f56;">Command not found. Type 'help' for available commands.</span>`;
+                    commandOutput.appendChild(outputDiv);
+                }
+                
+                // Scroll to bottom
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+
+        // Terminal buttons functionality
+        document.getElementById('close-terminal').addEventListener('click', function() {
+            alert('Terminal closed (simulated). In a real app, this would close the terminal.');
+        });
+
+        document.getElementById('minimize-terminal').addEventListener('click', function() {
+            alert('Terminal minimized (simulated).');
+        });
+
+        document.getElementById('maximize-terminal').addEventListener('click', function() {
+            alert('Terminal maximized (simulated).');
+        });
+
+        // === AI ASSISTANT ===
+        const aiAssistant = document.getElementById('ai-assistant');
+        const aiPanel = document.getElementById('ai-panel');
+        const aiIcon = document.getElementById('ai-icon');
+        const aiInput = document.getElementById('ai-input');
+
+        aiAssistant.addEventListener('click', function() {
+            if (aiPanel.style.display === 'block') {
+                aiPanel.style.display = 'none';
+                aiIcon.className = 'fas fa-robot';
+            } else {
+                aiPanel.style.display = 'block';
+                aiIcon.className = 'fas fa-times';
+                aiInput.focus();
+            }
+        });
+
+        aiInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const question = this.value.trim();
+                this.value = '';
+                
+                // Simple responses
+                let response = "I'm an AI assistant. In a full implementation, I would respond intelligently to your query.";
+                
+                if (question.toLowerCase().includes('hello') || question.toLowerCase().includes('hi')) {
+                    response = "Hello! How can I help you today?";
+                } else if (question.toLowerCase().includes('contact')) {
+                    response = "You can contact Letsapo via email at your.email@example.com or phone at +266 57620256";
+                } else if (question.toLowerCase().includes('kali')) {
+                    response = "Letsapo is proficient with Kali Linux tools including Metasploit, Nmap, Burp Suite, and more.";
+                }
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'ai-message';
+                messageDiv.textContent = response;
+                aiPanel.insertBefore(messageDiv, aiInput);
+                
+                // Scroll to bottom
+                aiPanel.scrollTop = aiPanel.scrollHeight;
+            }
         });
     </script>
 </body>
