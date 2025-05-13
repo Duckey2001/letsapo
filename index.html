@@ -372,11 +372,11 @@
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .kali-tools {
                 grid-template-columns: 1fr;
             }
-            
+
             .ai-panel {
                 width: 280px;
                 right: 1rem;
@@ -422,7 +422,7 @@
             <h2 class="kali-title">KALI LINUX TOOLSET</h2>
         </div>
         <p>As a certified Ethical Hacker, I'm proficient with Kali Linux's powerful penetration testing tools:</p>
-        
+
         <div class="kali-tools">
             <div class="tool-card" data-tool="metasploit">
                 <h3 class="tool-name">Metasploit Framework</h3>
@@ -786,7 +786,7 @@
             commandLine.className = 'command-line';
             commandLine.innerHTML = `<span class="prompt">$</span> ${command}`;
             commandOutput.appendChild(commandLine);
-            
+
             // Process command
             if (command.startsWith('tools ')) {
                 const tool = command.split(' ')[1];
@@ -816,7 +816,7 @@
                 outputDiv.innerHTML = `<span style="color: #ff5f56;">Command not found. Type 'help' for available commands.</span>`;
                 commandOutput.appendChild(outputDiv);
             }
-            
+
             // Scroll to bottom
             terminalBody.scrollTop = terminalBody.scrollHeight;
         }
@@ -839,7 +839,7 @@
             card.addEventListener('click', function() {
                 const tool = this.getAttribute('data-tool');
                 let toolName = '';
-                
+
                 switch(tool) {
                     case 'metasploit':
                         toolName = 'metasploit';
@@ -860,7 +860,7 @@
                         toolName = 'aircrack';
                         break;
                 }
-                
+
                 // Add command to terminal
                 commandInput.value = `tools ${toolName}`;
                 processCommand(`tools ${toolName}`);
@@ -891,95 +891,67 @@
         function sendAIMessage() {
             const question = aiInput.value.trim();
             if (!question) return;
-            
+
             aiInput.value = '';
-            
+
             // Add user message
             const userMessage = document.createElement('div');
             userMessage.className = 'ai-message user-message';
             userMessage.textContent = question;
             aiMessages.appendChild(userMessage);
-            
+
             // Add thinking indicator
             const thinking = document.createElement('div');
             thinking.className = 'ai-message';
             thinking.textContent = 'Thinking...';
             aiMessages.appendChild(thinking);
-            
+
             // Scroll to bottom
             aiMessages.scrollTop = aiMessages.scrollHeight;
-            
-            // Simulate API call (in a real app, this would be a fetch to your backend)
+
+            // Simulate API call
             setTimeout(() => {
                 // Remove thinking indicator
                 aiMessages.removeChild(thinking);
-                
-                // Generate response (in a real app, this would come from your API)
+
+                // Generate response
                 const response = generateAIResponse(question);
-                
+
                 // Add AI response
                 const aiMessage = document.createElement('div');
                 aiMessage.className = 'ai-message';
                 aiMessage.innerHTML = response;
                 aiMessages.appendChild(aiMessage);
-                
+
                 // Scroll to bottom
                 aiMessages.scrollTop = aiMessages.scrollHeight;
             }, 1000);
         }
 
-        // Generate AI response (simulated - replace with real API call)
+        // Generate AI response
         function generateAIResponse(question) {
-            question = question.toLowerCase();
-            
-            // Simple responses for demo purposes
-            if (question.includes('hello') || question.includes('hi')) {
-                return "Hello! How can I assist you with cybersecurity today?";
-            } else if (question.includes('contact')) {
-                return "You can contact Letsapo via:<br><br>" +
-                       "• Email: your.email@example.com<br>" +
-                       "• Phone: +266 57620256<br>" +
-                       "• LinkedIn: linkedin.com/in/yourprofile";
-            } else if (question.includes('kali') || question.includes('tools')) {
-                return "Letsapo is proficient with these Kali Linux tools:<br><br>" +
-                       "• <strong>Metasploit</strong> - Penetration testing framework<br>" +
-                       "• <strong>Nmap</strong> - Network discovery tool<br>" +
-                       "• <strong>Burp Suite</strong> - Web app testing<br>" +
-                       "• <strong>Wireshark</strong> - Network analyzer<br>" +
-                       "• <strong>John the Ripper</strong> - Password cracker<br>" +
-                       "• <strong>Aircrack-ng</strong> - WiFi security tools<br><br>" +
-                       "Ask about any specific tool for more details.";
-            } else if (question.includes('metasploit')) {
-                return "<strong>Metasploit Framework</strong><br><br>" +
-                       "The Metasploit Framework is an advanced open-source platform for developing, testing, and using exploit code. It's used for:<br>" +
-                       "• Penetration testing<br>" +
-                       "• IDS signature development<br>" +
-                       "• Security research<br><br>" +
-                       "Letsapo uses Metasploit for ethical hacking and security assessments.";
-            } else if (question.includes('nmap')) {
-                return "<strong>Nmap (Network Mapper)</strong><br><br>" +
-                       "Nmap is a network scanning tool used for:<br>" +
-                       "• Network discovery<br>" +
-                       "• Security auditing<br>" +
-                       "• Service/version detection<br>" +
-                       "• OS fingerprinting<br><br>" +
-                       "Letsapo uses Nmap for network reconnaissance and vulnerability assessment.";
-            } else if (question.includes('experience') || question.includes('background')) {
-                return "Letsapo Bokang has extensive experience in:<br><br>" +
-                       "• Ethical hacking and penetration testing<br>" +
-                       "• Network security assessments<br>" +
-                       "• Vulnerability research<br>" +
-                       "• Security awareness training<br><br>" +
-                       "With multiple cybersecurity certifications and hands-on experience with Kali Linux tools.";
-            } else {
-                // Default response (in a real app, this would call an AI API)
-                return "I'm a cybersecurity assistant. In a full implementation, I would provide detailed answers to your questions about:<br><br>" +
-                       "• Kali Linux tools<br>" +
-                       "• Ethical hacking techniques<br>" +
-                       "• Cybersecurity best practices<br>" +
-                       "• Letsapo's professional experience<br><br>" +
-                       "Try asking about specific tools like Metasploit or Nmap.";
+            // Simulate an API response
+            const responses = {
+                "hello": "Hello! How can I assist you with cybersecurity today?",
+                "contact": "You can contact Letsapo via:<br><br>• Email: your.email@example.com<br>• Phone: +266 57620256<br>• LinkedIn: linkedin.com/in/yourprofile",
+                "kali": "Letsapo is proficient with these Kali Linux tools:<br><br>• <strong>Metasploit</strong> - Penetration testing framework<br>• <strong>Nmap</strong> - Network discovery tool<br>• <strong>Burp Suite</strong> - Web app testing<br>• <strong>Wireshark</strong> - Network analyzer<br>• <strong>John the Ripper</strong> - Password cracker<br>• <strong>Aircrack-ng</strong> - WiFi security tools<br><br>Ask about any specific tool for more details.",
+                "metasploit": "<strong>Metasploit Framework</strong><br><br>The Metasploit Framework is an advanced open-source platform for developing, testing, and using exploit code. It's used for:<br>• Penetration testing<br>• IDS signature development<br>• Security research<br><br>Letsapo uses Metasploit for ethical hacking and security assessments.",
+                "nmap": "<strong>Nmap (Network Mapper)</strong><br><br>Nmap is a network scanning tool used for:<br>• Network discovery<br>• Security auditing<br>• Service/version detection<br>• OS fingerprinting<br><br>Letsapo uses Nmap for network reconnaissance and vulnerability assessment.",
+                "experience": "Letsapo Bokang has extensive experience in:<br><br>• Ethical hacking and penetration testing<br>• Network security assessments<br>• Vulnerability research<br>• Security awareness training<br><br>With multiple cybersecurity certifications and hands-on experience with Kali Linux tools.",
+                "education": "Letsapo's educational background includes:<br><br>• Certified Ethical Hacker (CEH)<br>• CompTIA Security+<br>• Offensive Security Certified Professional (OSCP)<br>• Bachelor's in Computer Science<br>• Multiple Kali Linux specialist certifications",
+                "projects": "Letsapo has worked on various cybersecurity projects, including:<br><br>• Cybersecurity Awareness Game<br>• Network Security Monitoring<br>• Web Application Penetration Testing<br>• Wireless Network Security Audit<br>• Secure File Sharing Platform<br>• Virtual Penetration Testing Lab<br>• Red Team Assessment<br>• Malware Analysis",
+                "meetings": "Letsapo has attended several meetings and events, including:<br><br>• Cybersecurity Awareness Workshop<br>• RSL Hackathon 2025 Competition<br>• Limkokwing Cybersecurity Community<br>• Universal Acceptance Day Lesotho 2025<br>• International Women’s Day 2025"
+            };
+
+            // Return a response based on the question
+            for (const key in responses) {
+                if (question.toLowerCase().includes(key)) {
+                    return responses[key];
+                }
             }
+
+            // Default response
+            return "I'm a cybersecurity assistant. I can provide detailed answers to your questions about:<br><br>• Kali Linux tools<br>• Ethical hacking techniques<br>• Cybersecurity best practices<br>• Letsapo's professional experience<br><br>Try asking about specific tools like Metasploit or Nmap.";
         }
 
         // Event listeners for AI input
