@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>📡 Meetings Attended | Letsapo Bokang - Cybersecurity Specialist</title>
+    <title>📡 Achievements | Letsapo Bokang - Cybersecurity Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet"/>
     <style>
@@ -105,13 +105,24 @@
             margin: 3rem auto;
             padding: 0 2rem;
         }
-        .meetings-grid {
+        .achievements-section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            border-bottom: 1px solid var(--matrix-green);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .meetings-grid, .certificates-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        .meeting-card {
+        .meeting-card, .certificate-card {
             background: var(--terminal-bg);
             border: 1px solid var(--matrix-green);
             border-radius: 8px;
@@ -119,12 +130,12 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        .meeting-card:hover {
+        .meeting-card:hover, .certificate-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
             border-color: var(--neon-blue);
         }
-        .meeting-card h3 {
+        .meeting-card h3, .certificate-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
             margin-top: 0;
@@ -132,7 +143,7 @@
             border-bottom: 1px solid rgba(0, 255, 136, 0.3);
             padding-bottom: 0.5rem;
         }
-        .meeting-link {
+        .meeting-link, .certificate-link {
             display: inline-block;
             margin-top: 1rem;
             color: var(--matrix-green);
@@ -140,7 +151,7 @@
             font-weight: 600;
             position: relative;
         }
-        .meeting-link::after {
+        .meeting-link::after, .certificate-link::after {
             content: '';
             position: absolute;
             bottom: -2px;
@@ -150,16 +161,69 @@
             background: var(--neon-blue);
             transition: width 0.3s ease;
         }
-        .meeting-link:hover {
+        .meeting-link:hover, .certificate-link:hover {
             color: var(--neon-blue);
         }
-        .meeting-link:hover::after {
+        .meeting-link:hover::after, .certificate-link:hover::after {
             width: 100%;
         }
-        .meeting-icon {
+        .meeting-icon, .certificate-icon {
             font-size: 2rem;
             color: var(--matrix-green);
             margin-bottom: 1rem;
+        }
+        .certificate-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+        .mentoring-highlight {
+            background: var(--terminal-bg);
+            border: 1px solid var(--cyber-purple);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .mentoring-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(189, 0, 255, 0.1) 0%, transparent 100%);
+            z-index: 0;
+        }
+        .mentoring-highlight h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyber-purple);
+            margin-top: 0;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .mentoring-highlight p {
+            position: relative;
+        }
+        .mentoring-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .mentoring-image {
+            flex: 1;
+            min-width: 200px;
+            border-radius: 5px;
+            border: 1px solid var(--matrix-green);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .mentoring-image:hover {
+            transform: scale(1.03);
         }
         footer {
             background: rgba(10, 10, 18, 0.8);
@@ -190,7 +254,7 @@
         @media (max-width: 768px) {
             .cyber-title { font-size: 2.2rem; }
             nav ul { flex-direction: column; gap: 1rem; }
-            .meetings-grid { grid-template-columns: 1fr; }
+            .meetings-grid, .certificates-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .cyber-title { font-size: 1.8rem; }
@@ -199,7 +263,7 @@
 </head>
 <body>
 <header>
-    <h1 class="cyber-title">MEETINGS ATTENDED</h1>
+    <h1 class="cyber-title">ACHIEVEMENTS</h1>
     <nav>
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -213,50 +277,80 @@
 </header>
 
 <main>
-    <div class="meetings-grid">
-        <div class="meeting-card">
-            <div class="meeting-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Cybersecurity Awareness Workshop</h3>
-            <p>Attended an intensive workshop on modern cybersecurity threats and defense strategies.</p>
-            <a href="https://web.facebook.com/share/p/18FtBKR1Nu/" class="meeting-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> View Event Details
-            </a>
+    <div class="achievements-section">
+        <h2 class="section-title">Certifications & Badges</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+                <h3>Cisco Ethical Hacker Badge</h3>
+                <img src="ethical-hacker-badge-by-cisco-to-letsapo-bokang.png" alt="Cisco Ethical Hacker Badge" class="certificate-image">
+                <p>Earned the prestigious Ethical Hacker certification from Cisco, demonstrating advanced skills in penetration testing, vulnerability assessment, and ethical hacking methodologies.</p>
+                <a href="#" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
         </div>
+    </div>
 
-        <div class="meeting-card">
-            <div class="meeting-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>RSL Hackathon 2025 Competition</h3>
-            <p>Competed to develop innovative solutions for Revenue Service Lesotho's Refund Payment System.</p>
-            <a href="https://web.facebook.com/share/p/1FGQSfDToQ/" class="meeting-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> View Competition Details
-            </a>
+    <div class="mentoring-highlight">
+        <h3>Mentoring Achievement: Code4Health 2025</h3>
+        <p>Successfully mentored <strong>Innovation Minds</strong>, a team of high school students from Lancer's Gap High School, who went on to win <strong>1st Prize ($300)</strong> in the Code4Health 2025 competition organized by Eclipse Foundation and Girls Coding Academy.</p>
+        
+        <div class="mentoring-images">
+            <img src="WhatsApp-Image-2025-05-06-at-16.48.41_9dfd72d3.jpg" alt="Code4Health Competition Info" class="mentoring-image">
+            <img src="WhatsApp-Image-2025-05-27-at-19.38.08_0e83dea3.jpg" alt="Innovation Minds Winning" class="mentoring-image">
         </div>
+        
+        <p>The competition focused on developing innovative solutions for health and wellness, and my mentees demonstrated exceptional creativity and technical skills in their winning project.</p>
+    </div>
 
-        <div class="meeting-card">
-            <div class="meeting-icon"><i class="fas fa-users"></i></div>
-            <h3>Limkokwing Cybersecurity Community</h3>
-            <p>Helped establish a cybersecurity community to educate students about digital security and cybercrime prevention.</p>
-            <a href="#" class="meeting-link">
-                <i class="fas fa-info-circle"></i> Community Initiative
-            </a>
-        </div>
+    <div class="achievements-section">
+        <h2 class="section-title">Meetings Attended</h2>
+        <div class="meetings-grid">
+            <div class="meeting-card">
+                <div class="meeting-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Cybersecurity Awareness Workshop</h3>
+                <p>Attended an intensive workshop on modern cybersecurity threats and defense strategies.</p>
+                <a href="https://web.facebook.com/share/p/18FtBKR1Nu/" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Event Details
+                </a>
+            </div>
 
-        <div class="meeting-card">
-            <div class="meeting-icon"><i class="fas fa-globe"></i></div>
-            <h3>Universal Acceptance Day Lesotho 2025</h3>
-            <p>Engaged with ISOC Lesotho, LCA, and ICANN at Victory Hall to promote digital inclusivity and awareness of multilingual domain names.</p>
-            <a href="https://web.facebook.com/story.php?story_fbid=pfbid02FCRHBBwMJzvwRuKh4GbAoYo5TyUu2mHADaLojdSxxZUEfTbCr7VW9UKiU4QF5rGfl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> View Highlights
-            </a>
-        </div>
+            <div class="meeting-card">
+                <div class="meeting-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>RSL Hackathon 2025 Competition</h3>
+                <p>Competed to develop innovative solutions for Revenue Service Lesotho's Refund Payment System.</p>
+                <a href="https://web.facebook.com/share/p/1FGQSfDToQ/" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Competition Details
+                </a>
+            </div>
 
-        <div class="meeting-card">
-            <div class="meeting-icon"><i class="fas fa-female"></i></div>
-            <h3>International Women’s Day 2025</h3>
-            <p>Participated in the event organized by Women Techmakers Ambassador Thabang Pinyane to celebrate women in tech and promote gender equality in STEM fields.</p>
-            <a href="https://web.facebook.com/story.php?story_fbid=pfbid02W6U6Xw8KZLu3B66KdvMBF7mrc7zht8L6q6aQ4RAxZZjEfKxUe9bnAfoVWtjDKPyWl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
-                <i class="fas fa-external-link-alt"></i> View Celebration
-            </a>
+            <div class="meeting-card">
+                <div class="meeting-icon"><i class="fas fa-users"></i></div>
+                <h3>Limkokwing Cybersecurity Community</h3>
+                <p>Helped establish a cybersecurity community to educate students about digital security and cybercrime prevention.</p>
+                <a href="#" class="meeting-link">
+                    <i class="fas fa-info-circle"></i> Community Initiative
+                </a>
+            </div>
+
+            <div class="meeting-card">
+                <div class="meeting-icon"><i class="fas fa-globe"></i></div>
+                <h3>Universal Acceptance Day Lesotho 2025</h3>
+                <p>Engaged with ISOC Lesotho, LCA, and ICANN at Victory Hall to promote digital inclusivity and awareness of multilingual domain names.</p>
+                <a href="https://web.facebook.com/story.php?story_fbid=pfbid02FCRHBBwMJzvwRuKh4GbAoYo5TyUu2mHADaLojdSxxZUEfTbCr7VW9UKiU4QF5rGfl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Highlights
+                </a>
+            </div>
+
+            <div class="meeting-card">
+                <div class="meeting-icon"><i class="fas fa-female"></i></div>
+                <h3>International Women's Day 2025</h3>
+                <p>Participated in the event organized by Women Techmakers Ambassador Thabang Pinyane to celebrate women in tech and promote gender equality in STEM fields.</p>
+                <a href="https://web.facebook.com/story.php?story_fbid=pfbid02W6U6Xw8KZLu3B66KdvMBF7mrc7zht8L6q6aQ4RAxZZjEfKxUe9bnAfoVWtjDKPyWl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Celebration
+                </a>
+            </div>
         </div>
     </div>
 </main>
