@@ -242,6 +242,7 @@
             color: var(--matrix-green);
             font-family: 'Orbitron', sans-serif;
         }
+        /* Updated Presidency Card with Image */
         .presidency-card {
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(189, 0, 255, 0.1));
             border: 2px solid var(--cyber-purple);
@@ -249,18 +250,52 @@
             text-align: center;
             border-radius: 8px;
             margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .presidency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, transparent 100%);
+            z-index: 0;
+        }
+        .presidency-card-content {
+            position: relative;
+            z-index: 1;
+        }
+        .presidency-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            border-radius: 8px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            object-fit: cover;
+            margin: 1rem auto;
+            display: block;
         }
         .presidency-card h3 {
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
             margin-bottom: 1rem;
+            position: relative;
         }
         .presidency-icon {
             font-size: 3rem;
             color: var(--cyber-purple);
             margin-bottom: 1rem;
             animation: pulse 2s infinite;
+            position: relative;
+        }
+        .presidency-card p {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
         }
         footer {
             background: rgba(10, 10, 18, 0.8);
@@ -300,13 +335,13 @@
             .image-grid {
                 grid-template-columns: 1fr;
             }
-            .grid-image {
+            .grid-image, .presidency-image {
                 height: 180px; /* Slightly smaller on mobile */
             }
         }
         @media (max-width: 480px) {
             .cyber-title { font-size: 1.8rem; }
-            .grid-image {
+            .grid-image, .presidency-image {
                 height: 150px; /* Even smaller for very small screens */
             }
         }
@@ -330,9 +365,12 @@
 <main>
     <!-- Leadership Achievement -->
     <div class="presidency-card">
-        <div class="presidency-icon"><i class="fas fa-crown"></i></div>
-        <h3>Appointed CyberSquad President 2025/2026</h3>
-        <p>Honored to be appointed as the President of CyberSquad for the academic year 2025/2026, leading initiatives to promote cybersecurity awareness and technical excellence among students.</p>
+        <div class="presidency-card-content">
+            <div class="presidency-icon"><i class="fas fa-crown"></i></div>
+            <h3>Appointed CyberSquad President 2025/2026</h3>
+            <img src="structure.jpeg" alt="CyberSquad Presidential Structure" class="presidency-image">
+            <p>Honored to be appointed as the President of CyberSquad for the academic year 2025/2026, leading initiatives to promote cybersecurity awareness and technical excellence among students. Responsible for coordinating events, workshops, and mentoring programs to build a strong cybersecurity community.</p>
+        </div>
     </div>
 
     <!-- Mentoring Achievements -->
