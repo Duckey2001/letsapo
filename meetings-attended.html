@@ -172,22 +172,35 @@
             color: var(--matrix-green);
             margin-bottom: 1rem;
         }
-        /* Updated Image Styles for Consistency */
-        .certificate-image, .event-image, .mentoring-image {
-            width: 100%;
-            height: 200px; /* Constant height */
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            border: 1px solid var(--neon-blue);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-            object-fit: cover; /* Ensures images fill the space without distortion */
-        }
-        /* Image Grid Layout - Always 3 images per row */
+        /* Unified Image Grid Styles */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 1.5rem 0;
+        }
+        .grid-image {
+            width: 100%;
+            height: 200px; /* Constant height */
+            border-radius: 5px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+            object-fit: cover;
+            background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(189, 0, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matrix-green);
+            font-size: 2rem;
+        }
+        .placeholder-image {
+            background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(189, 0, 255, 0.1));
+            border: 2px dashed var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matrix-green);
+            font-size: 2rem;
         }
         .mentoring-highlight {
             background: var(--terminal-bg);
@@ -217,12 +230,6 @@
         }
         .mentoring-highlight p {
             position: relative;
-        }
-        .meeting-images-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
         }
         .event-highlight {
             margin: 2rem 0;
@@ -282,8 +289,7 @@
             100% { transform: rotate(360deg); }
         }
         @media (max-width: 992px) {
-            .image-grid,
-            .meeting-images-grid {
+            .image-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -291,17 +297,16 @@
             .cyber-title { font-size: 2.2rem; }
             nav ul { flex-direction: column; gap: 1rem; }
             .meetings-grid, .certificates-grid, .leadership-grid { grid-template-columns: 1fr; }
-            .image-grid,
-            .meeting-images-grid {
+            .image-grid {
                 grid-template-columns: 1fr;
             }
-            .certificate-image, .event-image, .mentoring-image {
+            .grid-image {
                 height: 180px; /* Slightly smaller on mobile */
             }
         }
         @media (max-width: 480px) {
             .cyber-title { font-size: 1.8rem; }
-            .certificate-image, .event-image, .mentoring-image {
+            .grid-image {
                 height: 150px; /* Even smaller for very small screens */
             }
         }
@@ -339,9 +344,9 @@
             <p>Successfully mentored <strong>Innovation Minds</strong>, a team of high school students from Lancer's Gap High School, who won <strong>1st Prize ($300)</strong> in the Code4Health 2025 competition organized by Eclipse Foundation and Girls Coding Academy.</p>
             
             <div class="image-grid">
-                <img src="hack4healthpost.jpg" alt="Code4Health Competition Info" class="mentoring-image">
-                <img src="hack4health2.jpg" alt="Innovation Minds Winning Team" class="mentoring-image">
-                <img src="hack4health3.jpeg" alt="Code4Health Event" class="mentoring-image">
+                <img src="hack4healthpost.jpg" alt="Code4Health Competition Info" class="grid-image">
+                <img src="hack4health2.jpg" alt="Innovation Minds Winning Team" class="grid-image">
+                <img src="hack4health3.jpeg" alt="Code4Health Event" class="grid-image">
             </div>
             
             <p>The competition focused on developing innovative solutions for health and wellness, and my mentees demonstrated exceptional creativity and technical skills in their winning project.</p>
@@ -352,9 +357,9 @@
             <p>Mentored multiple student teams in the annual Mandela Day Coding Challenge, fostering problem-solving skills and computational thinking among young coders.</p>
             
             <div class="image-grid">
-                <img src="mandela1.jpeg" alt="Mandela Day Challenge Workshop" class="mentoring-image">
-                <img src="mandela2.jpeg" alt="Student Projects Presentation" class="mentoring-image">
-                <img src="mandela3.jpeg" alt="Challenge Winners" class="mentoring-image">
+                <img src="mandela1.jpeg" alt="Mandela Day Challenge Workshop" class="grid-image">
+                <img src="mandela2.jpeg" alt="Student Projects Presentation" class="grid-image">
+                <img src="mandela3.jpeg" alt="Challenge Winners" class="grid-image">
             </div>
             
             <p>Guided students through project development, debugging techniques, and presentation skills, resulting in several teams reaching the finals of the competition.</p>
@@ -370,9 +375,9 @@
             <p>Attended DevFest 2025 held at Kick4Life Hall, featuring workshops on modern web technologies, cloud computing, and AI/ML applications.</p>
             
             <div class="image-grid">
-                <img src="devfest1.jpeg" alt="DevFest Main Session" class="event-image">
-                <img src="devfest2.jpeg" alt="Google Technologies Workshop" class="event-image">
-                <img src="devfest3.jpeg" alt="Networking at DevFest" class="event-image">
+                <img src="devfest1.jpeg" alt="DevFest Main Session" class="grid-image">
+                <img src="devfest2.jpeg" alt="Google Technologies Workshop" class="grid-image">
+                <img src="devfest3.jpeg" alt="Networking at DevFest" class="grid-image">
             </div>
             
             <p>Connected with Google Developers Experts, participated in hands-on coding sessions, and learned about the latest Google technologies and developer tools.</p>
@@ -383,9 +388,11 @@
             <p>Participated in the annual Science Festival showcasing innovative projects in STEM fields, with focus on cybersecurity demonstrations and tech education.</p>
             
             <div class="image-grid">
-                <img src="sciencefestival1.jpeg" alt="Science Festival Exhibition" class="event-image">
-                <img src="sciencefestival2.jpeg" alt="Cybersecurity Demo" class="event-image">
-               
+                <img src="sciencefestival1.jpeg" alt="Science Festival Exhibition" class="grid-image">
+                <img src="sciencefestival2.jpeg" alt="Cybersecurity Demo" class="grid-image">
+                <div class="grid-image placeholder-image">
+                    <i class="fas fa-microscope"></i>
+                </div>
             </div>
             
             <p>Engaged with young scientists, presented cybersecurity awareness materials, and promoted STEM education to secondary school students.</p>
@@ -396,16 +403,18 @@
     <div class="achievements-section">
         <h2 class="section-title">Meetings & Workshops Attended</h2>
         <div class="meetings-grid">
-            <!-- NEW EVENT: Dev Hackathon 4 Hour Coding Challenge -->
+            <!-- Dev Hackathon 4 Hour Coding Challenge -->
             <div class="meeting-card">
                 <div class="meeting-icon"><i class="fas fa-bolt"></i></div>
                 <h3>Dev Hackathon 4 Hour Coding Challenge</h3>
                 <p>Participated in an intense 4-hour coding challenge that tested problem-solving skills, algorithmic thinking, and rapid prototyping under time pressure.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="devcode.jpg" alt="Hackathon Kickoff" class="event-image">
-                    <img src="devcode2.jpg" alt="Coding Session" class="event-image">
-                  
+                <div class="image-grid">
+                    <img src="devcode.jpg" alt="Hackathon Kickoff" class="grid-image">
+                    <img src="devcode2.jpg" alt="Coding Session" class="grid-image">
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
                 </div>
                 
                 <a href="https://web.facebook.com/share/p/YOUR_FACEBOOK_LINK_HERE/" class="meeting-link" target="_blank">
@@ -418,10 +427,16 @@
                 <h3>Cybersecurity Awareness Workshop</h3>
                 <p>Attended an intensive workshop on modern cybersecurity threats and defense strategies.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="cyber-workshop-1.jpg" alt="Workshop Session 1" class="event-image">
-                    <img src="cyber-workshop-2.jpg" alt="Workshop Session 2" class="event-image">
-                    <img src="cyber-workshop-3.jpg" alt="Workshop Group Photo" class="event-image">
+                <div class="image-grid">
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-users"></i>
+                    </div>
                 </div>
                 
                 <a href="https://web.facebook.com/share/p/18FtBKR1Nu/" class="meeting-link" target="_blank">
@@ -434,10 +449,10 @@
                 <h3>RSL Hackathon 2025 Competition</h3>
                 <p>Competed to develop innovative solutions for Revenue Service Lesotho's Refund Payment System.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="RSL1.jpeg" alt="Hackathon Opening" class="event-image">
-                    <img src="RSL2.jpeg" alt="Team Working Session" class="event-image">
-                    <img src="RSL3.jpeg" alt="Final Presentation" class="event-image">
+                <div class="image-grid">
+                    <img src="RSL1.jpeg" alt="Hackathon Opening" class="grid-image">
+                    <img src="RSL2.jpeg" alt="Team Working Session" class="grid-image">
+                    <img src="RSL3.jpeg" alt="Final Presentation" class="grid-image">
                 </div>
                 
                 <a href="https://web.facebook.com/share/p/1FGQSfDToQ/" class="meeting-link" target="_blank">
@@ -450,10 +465,16 @@
                 <h3>Limkokwing Cybersecurity Community</h3>
                 <p>Helped establish a cybersecurity community to educate students about digital security and cybercrime prevention.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="cyber-community-1.jpg" alt="Community Launch" class="event-image">
-                    <img src="cyber-community-2.jpg" alt="Training Session" class="event-image">
-                    <img src="cyber-community-3.jpg" alt="Community Members" class="event-image">
+                <div class="image-grid">
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
                 </div>
                 
                 <a href="https://www.facebook.com/61573200372027/posts/pfbid02v7RXtMZZ2AypkYgKEiLaheHSycfTM1TGdMzjKEy5mZGZy6ZAGGV8k8xdw7QFnVUjl/?app=fbl" class="meeting-link">
@@ -466,10 +487,10 @@
                 <h3>Universal Acceptance Day Lesotho 2025</h3>
                 <p>Engaged with ISOC Lesotho, LCA, and ICANN at Victory Hall to promote digital inclusivity and awareness of multilingual domain names.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="Universal1.jpeg" alt="Opening Ceremony" class="event-image">
-                    <img src="Universal2.jpeg" alt="Panel Discussion" class="event-image">
-                    <img src="Universal3.jpeg" alt="Networking Session" class="event-image">
+                <div class="image-grid">
+                    <img src="Universal1.jpeg" alt="Opening Ceremony" class="grid-image">
+                    <img src="Universal2.jpeg" alt="Panel Discussion" class="grid-image">
+                    <img src="Universal3.jpeg" alt="Networking Session" class="grid-image">
                 </div>
                 
                 <a href="https://web.facebook.com/story.php?story_fbid=pfbid02FCRHBBwMJzvwRuKh4GbAoYo5TyUu2mHADaLojdSxxZUEfTbCr7VW9UKiU4QF5rGfl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
@@ -482,10 +503,12 @@
                 <h3>International Women's Day 2025</h3>
                 <p>Participated in the event organized by Women Techmakers Ambassador Thabang Pinyane to celebrate women in tech and promote gender equality in STEM fields.</p>
                 
-                <div class="meeting-images-grid">
-                    <img src="humaninTech1.jpeg" alt="Keynote Speech" class="event-image">
-                    <img src="humaninTech2.jpeg" alt="Women in Tech Panel" class="event-image">
-                   
+                <div class="image-grid">
+                    <img src="humaninTech1.jpeg" alt="Keynote Speech" class="grid-image">
+                    <img src="humaninTech2.jpeg" alt="Women in Tech Panel" class="grid-image">
+                    <div class="grid-image placeholder-image">
+                        <i class="fas fa-female"></i>
+                    </div>
                 </div>
                 
                 <a href="https://web.facebook.com/story.php?story_fbid=pfbid02W6U6Xw8KZLu3B66KdvMBF7mrc7zht8L6q6aQ4RAxZZjEfKxUe9bnAfoVWtjDKPyWl&id=61550515232529&mibextid=Nif5oz" class="meeting-link" target="_blank">
